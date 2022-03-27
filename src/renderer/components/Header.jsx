@@ -1,13 +1,13 @@
 import './Header.css';
 
-// eslint-disable-next-line react/prop-types
 function Header({ page, menuClick }) {
   const content = () => {
     return ['Accueil', 'Saisies', 'Bilan'].map((item) => {
+      let classname = "menu"
       if (page === item.toLowerCase()) {
-        return <div className="menu active">{item}</div>;
+        classname += " active"
       }
-      return <div className="menu" onClick={e => menuClick(item.toLowerCase())} >{item}</div>;
+      return <div key={item.toLowerCase()} className={classname} onClick={e => menuClick(item.toLowerCase())} >{item}</div>;
     });
   };
 
