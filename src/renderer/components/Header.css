@@ -7,7 +7,6 @@
 
 }
 
-
 .menu {
   padding: 0.5rem 1rem;
   border: 1px solid white;
@@ -16,6 +15,7 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: background-color 500ms, color 500ms;
 }
 .menu.active {
   background-color: white;
