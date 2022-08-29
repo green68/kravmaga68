@@ -59,4 +59,8 @@ a:hover {
   width: 100vw;
 }
 
-
+.btn-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
