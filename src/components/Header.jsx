@@ -1,21 +1,11 @@
 import './Header.css';
-import ButtonMenu from './ButtonMenu';
 
-function Header({ page, menuClick }) {
-  const content = () => {
-    return ['home', 'bilan'].map((item) => {
-      return <ButtonMenu 
-      key={item}
-      name={item} 
-      page={page} 
-      menuClick={item => menuClick(item)} 
-      />
-    });
-  };
+function Header({ page, menuClick, children }) {
+  console.log(children);
 
   return (
     <header className="main-header">
-      {content()}
+      {children}
     </header>
   );
 }
