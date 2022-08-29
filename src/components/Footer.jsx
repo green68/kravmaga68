@@ -1,21 +1,10 @@
 import './Footer.css';
-import ButtonMenu from "./ButtonMenu";
 
-const Footer = ({ page, menuClick }) => {
-
-  const content = () => {
-    return ['year', 'cash', 'bank'].map((item) => {
-      return <ButtonMenu 
-      key={item}
-      name={item} 
-      page={page} 
-      menuClick={item => menuClick(item)} />
-    })
-  }
+const Footer = ({ children }) => {
 
   return (
     <footer className="main-footer">
-      {content()}
+      {children}
     </footer>
   )
 }
