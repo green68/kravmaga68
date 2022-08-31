@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 // import Content from "./components/Content";
 import { getYear } from "./datas/datas";
-import { NavLink, useNavigate, Routes, Route } from "react-router-dom";
+import { NavLink, useNavigate, Routes, Route, Navigate } from "react-router-dom";
 import {
   FaBalanceScale,
   FaCalendar,
@@ -26,8 +26,8 @@ const Menu = {
   Balance: "balance",
   Bank: "bank",
   Cash: "cash",
-  Year: "year"
-}
+  Year: "year",
+};
 
 export default function App() {
   let navigate = useNavigate();
@@ -40,13 +40,12 @@ export default function App() {
   //   setYear(getYear())
   // }, [])
 
-
   const changePage = (e) => {
     e.preventDefault();
 
     const newMenu = e.currentTarget?.dataset?.menu;
     console.log(`newMenu : ${newMenu}`);
-    
+
     if (newMenu) {
       navigate(newMenu);
       setMenu(newMenu);
@@ -77,13 +76,14 @@ export default function App() {
         </NavLink>
       </Header>
       <main>
-      <Routes>
+        <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/balance" element={<BalancePage />} />
           <Route path="/year" element={<YearPage />} />
           <Route path="/bank" element={<BankPage />} />
           <Route path="/cash" element={<CashPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
       <Footer>
