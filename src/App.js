@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-// import Content from "./components/Content";
-import { getYear } from "./datas/datas";
+import { datas } from "./datas/datas";
 import { NavLink, useNavigate, Routes, Route, Navigate } from "react-router-dom";
 import {
   FaBalanceScale,
@@ -18,8 +17,9 @@ import BalancePage from "./pages/BalancePage";
 import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
+import { jsonDatas } from "./datas/datas.json";
 
-const dataYear = getYear();
+
 
 const Menu = {
   Home: "home",
@@ -29,16 +29,26 @@ const Menu = {
   Year: "year",
 };
 
+console.clear()
+
+// TEST: 
+// datas.setUserFromJSON(jsonDatas)
+
+// TODO: a associer à un bouton pour sauvegarde
+// datas.saveToFile('kravmaga.json')
+
+// TODO: if already save no rewrite, just saved initially ???
+if(!datas.isLocale()) datas.saveToLocale()
+
 export default function App() {
+
   let navigate = useNavigate();
+  const user = datas.getUser()
 
+  // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
-  // const [page, setPage] = useState("home");
-  const [year, setYear] = useState(dataYear);
-
-  // useEffect(() => {
-  //   setYear(getYear())
-  // }, [])
+  // eslint-disable-next-line
+  const [year, setYear] = useState(user.years?.getLast());
 
   const changePage = (e) => {
     e.preventDefault();
@@ -50,14 +60,32 @@ export default function App() {
       navigate(newMenu);
       setMenu(newMenu);
     }
-    // console.log(`menu : ${menu}`);
   };
+  
+  // for resize page 
+  useEffect(() => {
+    function handleResize() {
+      const main = document.querySelector('.main')
+      const winHeight = `${window.innerHeight}px`
+      const mainHeight = window.getComputedStyle(main).getPropertyValue("height")
+      if(winHeight !== mainHeight) {
+        main.style.height = winHeight
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+
+    }
+  })
 
   return (
     <div className="main">
       <Header>
         <NavLink
-          to={"/"}
+          to={"/home"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Home}
           onClick={(e) => changePage(e)}
@@ -103,7 +131,7 @@ export default function App() {
           onClick={(e) => changePage(e)}
         >
           <BsBank />
-          NC
+          {year ? year.getBank() : "NC"}
         </NavLink>
 
         <NavLink
@@ -113,7 +141,7 @@ export default function App() {
           onClick={(e) => changePage(e)}
         >
           <FaPiggyBank />
-          NC
+          {year ? year.getCash() : "NC"}
         </NavLink>
       </Footer>
     </div>
