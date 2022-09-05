@@ -17,7 +17,6 @@ import BalancePage from "./pages/BalancePage";
 import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
-import { jsonDatas } from "./datas/datas.json";
 import { pathTo } from "./utilities/functions";
 
 const Menu = {
@@ -43,8 +42,9 @@ if(!datas.isLocale()) datas.saveToLocale()
 export default function App() {
 
   let navigate = useNavigate();
-  const user = datas.getUser()
 
+  // eslint-disable-next-line
+  const [user, setUser] = useState(datas.getUser()) 
   // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
