@@ -57,7 +57,7 @@ export default function App() {
     console.log(`newMenu : ${newMenu}`);
 
     if (newMenu) {
-      navigate(newMenu);
+      navigate("kravmage68/"+newMenu);
       setMenu(newMenu);
     }
   };
@@ -85,7 +85,7 @@ export default function App() {
     <div className="main">
       <Header>
         <NavLink
-          to={"/home"}
+          to={"kravmage68/home"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Home}
           onClick={(e) => changePage(e)}
@@ -94,7 +94,7 @@ export default function App() {
           Accueil
         </NavLink>
         <NavLink
-          to={"/balance"}
+          to={"kravmage68/balance"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Balance}
           onClick={(e) => changePage(e)}
@@ -105,18 +105,18 @@ export default function App() {
       </Header>
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/balance" element={<BalancePage />} />
-          <Route path="/year" element={<YearPage />} />
-          <Route path="/bank" element={<BankPage />} />
-          <Route path="/cash" element={<CashPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* <Route path="/" element={<HomePage />} /> */}
+          <Route path="kravmage68/home" element={<HomePage />} />
+          <Route path="kravmage68/balance" element={<BalancePage />} />
+          <Route path="kravmage68/year" element={<YearPage />} />
+          <Route path="kravmage68/bank" element={<BankPage />} />
+          <Route path="kravmage68/cash" element={<CashPage />} />
+          <Route path="*" element={<Navigate to="kravmage68/home" />} />
         </Routes>
       </main>
       <Footer>
         <NavLink
-          to={"/year"}
+          to={"kravmage68/year"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Year}
           onClick={(e) => changePage(e)}
@@ -125,7 +125,7 @@ export default function App() {
           {year ? year.id : "NC"}
         </NavLink>
         <NavLink
-          to={"/bank"}
+          to={"kravmage68/bank"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Bank}
           onClick={(e) => changePage(e)}
@@ -135,7 +135,7 @@ export default function App() {
         </NavLink>
 
         <NavLink
-          to={"/cash"}
+          to={"kravmage68/cash"}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Cash}
           onClick={(e) => changePage(e)}
