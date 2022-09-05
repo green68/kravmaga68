@@ -1,11 +1,10 @@
 import { User } from "../classes/user";
-import { jsonDatas } from "./datas.json.js"
 
 class Datas {
     constructor() {
         this.user = new User({})
     }
-    setUserFromJSON(datas = jsonDatas) {
+    setUserFromJSON(datas = {}) {
         this.user = new User(datas)
     }
     getUser() {
