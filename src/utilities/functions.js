@@ -7,3 +7,6 @@ export const isJSON = datas => {
         return false
     }
 }
+
+const Pathname = "kravmaga68/"
+export const pathTo = menu => Pathname + menu

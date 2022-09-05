@@ -18,8 +18,7 @@ import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
 import { jsonDatas } from "./datas/datas.json";
-
-
+import { pathTo } from "./utilities/functions";
 
 const Menu = {
   Home: "home",
@@ -28,6 +27,7 @@ const Menu = {
   Cash: "cash",
   Year: "year",
 };
+
 
 console.clear()
 
@@ -57,7 +57,7 @@ export default function App() {
     console.log(`newMenu : ${newMenu}`);
 
     if (newMenu) {
-      navigate("kravmage68/"+newMenu);
+      navigate(pathTo(newMenu));
       setMenu(newMenu);
     }
   };
@@ -85,7 +85,7 @@ export default function App() {
     <div className="main">
       <Header>
         <NavLink
-          to={"kravmage68/home"}
+          to={pathTo(Menu.Home)}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Home}
           onClick={(e) => changePage(e)}
@@ -94,7 +94,7 @@ export default function App() {
           Accueil
         </NavLink>
         <NavLink
-          to={"kravmage68/balance"}
+          to={pathTo(Menu.Balance)}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Balance}
           onClick={(e) => changePage(e)}
@@ -106,17 +106,17 @@ export default function App() {
       <main>
         <Routes>
           {/* <Route path="/" element={<HomePage />} /> */}
-          <Route path="kravmage68/home" element={<HomePage />} />
-          <Route path="kravmage68/balance" element={<BalancePage />} />
-          <Route path="kravmage68/year" element={<YearPage />} />
-          <Route path="kravmage68/bank" element={<BankPage />} />
-          <Route path="kravmage68/cash" element={<CashPage />} />
-          <Route path="*" element={<Navigate to="kravmage68/home" />} />
+          <Route path={pathTo(Menu.Home)} element={<HomePage />} />
+          <Route path={pathTo(Menu.Balance)} element={<BalancePage />} />
+          <Route path={pathTo(Menu.Year)} element={<YearPage />} />
+          <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
+          <Route path={pathTo(Menu.Cash)} element={<CashPage />} />
+          <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
         </Routes>
       </main>
       <Footer>
         <NavLink
-          to={"kravmage68/year"}
+          to={pathTo(Menu.Year)}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Year}
           onClick={(e) => changePage(e)}
@@ -125,7 +125,7 @@ export default function App() {
           {year ? year.id : "NC"}
         </NavLink>
         <NavLink
-          to={"kravmage68/bank"}
+          to={pathTo(Menu.Bank)}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Bank}
           onClick={(e) => changePage(e)}
@@ -135,7 +135,7 @@ export default function App() {
         </NavLink>
 
         <NavLink
-          to={"kravmage68/cash"}
+          to={pathTo(Menu.Cash)}
           className="btn btn-dark btn-menu"
           data-menu={Menu.Cash}
           onClick={(e) => changePage(e)}
