@@ -44,7 +44,7 @@ const jsonDatas = `{
           "date": null,
           "label": "restitution avance caisse philippe",
           "type": "",
-          "credit": "40.00"
+          "mvt": "40.00"
         },
         {
           "id": "02",
@@ -53,19 +53,19 @@ const jsonDatas = `{
           "mvt": "-40.00"
         },
         {
-          "id": "2019-03",
+          "id": "03",
           "date": null,
           "label": "achat tee-shirt alma",
           "mvt": "10.00"
         },
         {
-          "id": "2019-04",
+          "id": "04",
           "date": null,
           "label": "retrait banque",
-          "credit": "120.00"
+          "mvt": "120.00"
         },
         {
-          "id": "2019-05",
+          "id": "05",
           "date": null,
           "label": "paiement stage",
           "mvt": "-10.00"
@@ -75,4 +75,6 @@ const jsonDatas = `{
   ]
 }`
 
-export { jsonDatas }
+export {
+  jsonDatas,
+}
