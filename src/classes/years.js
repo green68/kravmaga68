@@ -13,7 +13,7 @@ class Years{
             const year = new Year(data)
             return year
         })
-        
+        this.datas = datas.sort((a,b) => a.id - b.id)
     }
     getLast() {
         const year = this.datas[this.datas.length - 1]
