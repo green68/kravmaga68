@@ -1,9 +1,9 @@
 
 export const isJSON = datas => {
     try {
-        const obj = JSON.parse(datas)
-        return obj
+        JSON.parse(datas)
+        return true
     } catch (error) {
-        throw new Error(error)      
+        return false
     }
 }
