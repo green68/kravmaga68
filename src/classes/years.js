@@ -1,12 +1,32 @@
+import { Year } from "./year"
 
+/**
+ * 
+ */
 class Years{
+    /**
+     * 
+     * @param {Year[]} datas 
+     */
     constructor(datas = []){
-        // datas.forEach( year =>)
-        this.datas = datas.sort((a,b) => a.id - b.id)
+        this.datas = datas.map(data => {
+            const year = new Year(data)
+            return year
+        })
+        
     }
     getLast() {
-        console.log(this.datas);
-        return this.datas[this.datas.length - 1]
+        const year = this.datas[this.datas.length - 1]
+        // console.log(year instanceof Year);
+        return year
+    }
+    // toString() {
+
+    //     // return this.datas
+    //     return JSON.stringify(this.datas)
+    // }
+    toJSON() {
+        return this.datas
     }
 
 }
