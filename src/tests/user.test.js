@@ -1,30 +1,20 @@
 import { User } from "../classes/user";
 
-test('user create not json', () => {
-    function newUserThrowJsonError() {
-        new User('')
-    }
-    expect(newUserThrowJsonError).toThrowError(/JSON/)
-
+test('create user with empty string', () => {
+    const user = new User('')
+    
+    expect(user.name).toBeNull()
+    
 })
-test('user create name not defined', () => {
-    function newUserThrowNameError() {
-        new User()
-    }
-    expect(newUserThrowNameError).toThrowError(/name/)
-
-})
-test('user create without years array', () => {
-    function newUserThrowYearsError() {
-        new User('{"name": "mon nom", "years": null}')
-    }
-    expect(newUserThrowYearsError).toThrowError(/years/)
+test('create user with no value', () => {
+    const user = new User()
+    
+    expect(user.name).toBeNull()
 
 })
 test('user create key not valid', () => {
-    function newUserThrowYearsError() {
-        new User('{"name": "mon nom", "years": [], "test": null}')
-    }
-    expect(newUserThrowYearsError).toThrowError(/key/)
+    const user = new User('{"name": "mon nom", "years": [], "test": null}')
 
+    expect(user.test).not.toBeUndefined()
+    expect(user.test).toBeNull()
 })
