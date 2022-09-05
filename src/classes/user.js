@@ -1,55 +1,69 @@
 import { Years } from "./years";
 import { isJSON } from "../utilities/functions";
 
-const userInit = `{
-    "name": null,
-    "years": []
-}`
-
-// class 
 
 class User {
-    constructor(options = userInit) {
-        this.name = undefined
-        this.years = undefined
+    constructor(options = {}) {
+        this.name = options.user?.name || null
+        this.years = new Years(options.years)
         
-        console.clear()
-        
+        if(isJSON(options)) {
+            this.fromJSON(options)
+        }
+    }
+    
+    fromJSON(datas) {
+        if (!isJSON(datas)) return
 
-
-        const obj = isJSON(options)
-        
-        for (const [key, value] of Object.entries(obj)) {
+        datas = JSON.parse(datas)
+        // console.log("datas :",datas);
+        // debugger
+        for (const [key, value] of Object.entries(datas)) {
+            // console.log(key);
             switch (key) {
                 case "name":
-                    if(value) {
+                    if (value) {
                         this.name = value
                     } else {
                         throw new Error("create user: name not defined")
                     }
                     break;
                 case "years":
-                    // debugger
-                    if(value && Array.isArray(value)) {
+                    // console.log(value);
+                    if (value && Array.isArray(value)) {
                         this.years = new Years(value)
+                    } else if(value && value instanceof Object) {
+                        console.log("***object years");
+                        this.years = new Years(value.datas)
                     } else {
                         throw new Error("create user: years must be an array")
                     }
                     break
                 default:
-                    throw new Error("create user: key not valid")
                     this[key] = value
+                    console.log(`new key ${key}: ${value}`);
+                    // throw new Error("create user: key not valid")
                     break;
             }
-
-            // console.log(key, value);
         }
     }
+
     getLastYear() {
-    // getLast() {
+        // getLast() {
         console.log(this.years.length);
         return this.years[this.years.length - 1]
     }
+
+    toJSON() {
+        return {
+            name: this.name,
+            years: this.years.toJSON()
+        };
+    }
+
+    // toString() {
+    //     return "{pour test}"
+    // }
 }
 
 export { User }
