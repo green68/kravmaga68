@@ -18,6 +18,8 @@ import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/functions";
+import { jsonDatas } from "./datas/datas.json";
+import UserInit from "./components/UserInit";
 
 const Menu = {
   Home: "home",
@@ -37,18 +39,19 @@ console.clear()
 // datas.saveToFile('kravmaga.json')
 
 // TODO: if already save no rewrite, just saved initially ???
-if(!datas.isLocale()) datas.saveToLocale()
+if (!datas.isLocale()) datas.saveToLocale()
 
 export default function App() {
 
   let navigate = useNavigate();
 
   // eslint-disable-next-line
-  const [user, setUser] = useState(datas.getUser()) 
+  const [user, setUser] = useState(datas.getUser())
   // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
   const [year, setYear] = useState(user.years?.getLast());
+  // console.log(user);
 
   const changePage = (e) => {
     e.preventDefault();
@@ -57,29 +60,32 @@ export default function App() {
     console.log(`newMenu : ${newMenu}`);
 
     if (newMenu) {
-      navigate(pathTo(newMenu));
       setMenu(newMenu);
+      navigate(pathTo(newMenu));
     }
   };
-  
+
   // for resize page 
   useEffect(() => {
     function handleResize() {
       const main = document.querySelector('.main')
       const winHeight = `${window.innerHeight}px`
       const mainHeight = window.getComputedStyle(main).getPropertyValue("height")
-      if(winHeight !== mainHeight) {
+      if (winHeight !== mainHeight) {
         main.style.height = winHeight
       }
     }
+
     handleResize()
     window.addEventListener('resize', handleResize)
-    
+
     return _ => {
       window.removeEventListener('resize', handleResize)
 
     }
   })
+
+  // const initUser = !user.name ? <UserInit/> : null
 
   return (
     <div className="main">
@@ -144,6 +150,11 @@ export default function App() {
           {year ? year.getCash() : "NC"}
         </NavLink>
       </Footer>
+
+      { <UserInit show={!user.name}/> }
+
     </div>
+
   );
 }
+
