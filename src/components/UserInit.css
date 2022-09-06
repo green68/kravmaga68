@@ -1,0 +1,15 @@
+.modal-content {
+    background: linear-gradient(135deg, var(--clr-dark), var(--clr-dark-blue));
+    /* border: 1px solid #ccc; */
+    /* border-bottom: 0; */
+}
+.modal-header {
+    border-bottom-color: transparent;
+
+}
+.modal-footer {
+    border-top: transparent;
+}
+/* .react-datepicker__input-container input {
+    width:  100%;
+} */
