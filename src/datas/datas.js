@@ -10,7 +10,12 @@ class Datas {
     getUser() {
         return this.user
     }
-    saveToLocale() {
+    getUserFromLocale() {
+        debugger
+        this.user = new User(localStorage.getItem('user'))
+    }
+    saveToLocale(user = null) {
+        if(user) this.user = user
         const userString = JSON.stringify(this.user)
         
         localStorage.setItem('user', userString)
@@ -26,11 +31,11 @@ class Datas {
         }
         
         const datas = JSON.stringify(this.user, null, 3)
-        // console.log(datas);
         download(datas, filename, 'text/plain');
     }
     isLocale() {
-        return localStorage.getItem('user') ? true : false
+        const resp = localStorage.getItem('user') ? true : false
+        return resp
     }
 }
 
