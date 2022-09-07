@@ -4,7 +4,7 @@ import { isJSON } from "../utilities/functions";
 
 class User {
     constructor(options = {}) {
-        this.name = options.user?.name || null
+        this.name = options.name || null
         this.years = new Years(options.years)
         
         if(isJSON(options)) {
