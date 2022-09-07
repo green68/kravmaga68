@@ -11,7 +11,6 @@ class Datas {
         return this.user
     }
     getUserFromLocale() {
-        debugger
         this.user = new User(localStorage.getItem('user'))
     }
     saveToLocale(user = null) {
