@@ -111,24 +111,24 @@ const UserInit = ({ show, handleInit }) => {
                     </Form.Group>
                     
                     <Form.Group className="mb-3" >
-                        <Form.Label>Solde Caisse</Form.Label>
+                        <Form.Label>Report solde Banque</Form.Label>
                         <Form.Control
-                            id="cash"
-                            className={fields.cash.valid === null ? "" : fields.cash.valid ? "is-valid": "is-invalid"}
+                            id="bank"
+                            className={fields.bank.valid === null ? "" : fields.bank.valid ? "is-valid": "is-invalid"}
                             placeholder="0.00"
-                            value={fields.cash.value}
+                            value={fields.bank.value}
                             onChange={handleChange}
                             required
                         />
                     </Form.Group>
 
                     <Form.Group className="mb-3" >
-                        <Form.Label>Solde Banque</Form.Label>
+                        <Form.Label>Report solde Caisse</Form.Label>
                         <Form.Control
-                            id="bank"
-                            className={fields.bank.valid === null ? "" : fields.bank.valid ? "is-valid": "is-invalid"}
+                            id="cash"
+                            className={fields.cash.valid === null ? "" : fields.cash.valid ? "is-valid": "is-invalid"}
                             placeholder="0.00"
-                            value={fields.bank.value}
+                            value={fields.cash.value}
                             onChange={handleChange}
                             required
                         />
