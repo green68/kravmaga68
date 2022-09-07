@@ -25,7 +25,8 @@ class User {
                     if (value) {
                         this.name = value
                     } else {
-                        throw new Error("create user: name not defined")
+                        this.name = null
+                        console.log("create user: name not defined")
                     }
                     break;
                 case "years":
