@@ -20,6 +20,7 @@ import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/functions";
 import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
+import { User } from "./classes/user";
 
 const Menu = {
   Home: "home",
@@ -39,7 +40,11 @@ console.clear()
 // datas.saveToFile('kravmaga.json')
 
 // TODO: if already save no rewrite, just saved initially ???
-if (!datas.isLocale()) datas.saveToLocale()
+if (datas.isLocale()) {
+  datas.getUserFromLocale()
+} else {
+  datas.saveToLocale()
+}
 
 export default function App() {
 
@@ -51,7 +56,6 @@ export default function App() {
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
   const [year, setYear] = useState(user.years?.getLast());
-  // console.log(user);
 
   const changePage = (e) => {
     e.preventDefault();
@@ -64,6 +68,12 @@ export default function App() {
       navigate(pathTo(newMenu));
     }
   };
+
+
+  const userInitialize = (userDatas) => {
+    setUser(new User(userDatas))
+    
+  }
 
   // for resize page 
   useEffect(() => {
@@ -85,7 +95,11 @@ export default function App() {
     }
   })
 
-  // const initUser = !user.name ? <UserInit/> : null
+  // update year and saveToLocale after user change
+  useEffect(() => {
+    setYear(user.years?.getLast())
+    datas.saveToLocale(user)
+  }, [user])
 
   return (
     <div className="main">
@@ -130,6 +144,7 @@ export default function App() {
           <FaCalendar />
           {year ? year.id : "NC"}
         </NavLink>
+
         <NavLink
           to={pathTo(Menu.Bank)}
           className="btn btn-dark btn-menu"
@@ -151,7 +166,7 @@ export default function App() {
         </NavLink>
       </Footer>
 
-      { <UserInit show={!user.name}/> }
+      { <UserInit show={!user.name} handleInit={userInitialize}/> }
 
     </div>
 
