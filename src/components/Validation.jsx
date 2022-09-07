@@ -1,6 +1,6 @@
 import { Button, CloseButton, Modal } from "react-bootstrap"
 
-const Validation = ({ show, close, title }) => {
+const Validation = ({ show, close, datas }) => {
 
 
 
@@ -12,18 +12,18 @@ const Validation = ({ show, close, title }) => {
             centered
         >
             <Modal.Header >
-                <Modal.Title>{title}</Modal.Title>
+                <Modal.Title>{datas.title}</Modal.Title>
                 <CloseButton variant="white" onClick={close}/>
             </Modal.Header>
 
             <Modal.Body>
-                Cette action effacera toutes les données!
+                {datas.message}
             </Modal.Body>
 
             <Modal.Footer>
                 <Button
-                    variant="danger"
-                    // onClick={saveForm}
+                    variant={datas.button}
+                    onClick={() => datas.callback()}
                 >
                     Valider
                 </Button>
