@@ -10,6 +10,7 @@ import {
   FaCalendar,
   FaHome,
   FaPiggyBank,
+  FaTools,
 } from "react-icons/fa";
 import { BsBank } from "react-icons/bs";
 import HomePage from "./pages/HomePage";
@@ -21,6 +22,7 @@ import { pathTo } from "./utilities/functions";
 import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
 import { User } from "./classes/user";
+import ToolsPage from "./pages/ToolsPage";
 
 const Menu = {
   Home: "home",
@@ -28,6 +30,7 @@ const Menu = {
   Bank: "bank",
   Cash: "cash",
   Year: "year",
+  Tools: "tools"
 };
 
 
@@ -122,6 +125,15 @@ export default function App() {
           <FaBalanceScale />
           Balance
         </NavLink>
+        <NavLink
+          to={pathTo(Menu.Tools)}
+          className="btn btn-dark btn-menu"
+          data-menu={Menu.Tools}
+          onClick={(e) => changePage(e)}
+        >
+          <FaTools />
+          Outils
+        </NavLink>
       </Header>
       <main>
         <Routes>
@@ -131,6 +143,7 @@ export default function App() {
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
           <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
           <Route path={pathTo(Menu.Cash)} element={<CashPage />} />
+          <Route path={pathTo(Menu.Tools)} element={<ToolsPage />} />
           <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
         </Routes>
       </main>
