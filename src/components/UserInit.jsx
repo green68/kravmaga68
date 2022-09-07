@@ -95,6 +95,7 @@ const UserInit = ({ show, handleInit }) => {
                             onChange={handleChange}
                             // pattern="eric v"
                             required
+                            autoFocus
                         />
                     </Form.Group>
 
