@@ -17,11 +17,11 @@ const UserInit = ({ show, handleInit }) => {
 
     const isTargetValid = (target, value) => {
         const floatRegex = /^[+-]?\d+(\.\d{0,2})?$/
+        const pseudoRegex = /^([a-zA-Z0-9-_]{5,25})$/
         // console.log(target);
         switch (target) {
             case "name":
-                // TODO: change for regex test
-                if (value[target].value.length < 5) return false
+                if(!pseudoRegex.test(value[target].value)) return false
                 break;
             // case "year":
             //     // if (name.length < 5) return false
@@ -54,8 +54,7 @@ const UserInit = ({ show, handleInit }) => {
     }
 
     const saveForm = (e) => {
-        // TODO: change user datas
-        console.log("sauvegarde");
+        console.log("Initialisation éffectué");
         handleInit({
             name: fields.name.value,
             years: [
@@ -66,7 +65,6 @@ const UserInit = ({ show, handleInit }) => {
                 }
             ]
         })
-     
     }
 
     return (
