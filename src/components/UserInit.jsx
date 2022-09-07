@@ -3,9 +3,9 @@ import "./UserInit.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const UserInit = ({ show }) => {
+const UserInit = ({ show, handleInit }) => {
 
     const [fields, setFields] = useState({
         name: { valid: null, value: "" },
@@ -17,9 +17,10 @@ const UserInit = ({ show }) => {
 
     const isTargetValid = (target, value) => {
         const floatRegex = /^[+-]?\d+(\.\d{0,2})?$/
-        console.log(target);
+        // console.log(target);
         switch (target) {
             case "name":
+                // TODO: change for regex test
                 if (value[target].value.length < 5) return false
                 break;
             // case "year":
@@ -55,11 +56,18 @@ const UserInit = ({ show }) => {
     const saveForm = (e) => {
         // TODO: change user datas
         console.log("sauvegarde");
+        handleInit({
+            name: fields.name.value,
+            years: [
+                {
+                    id: fields.date.value,
+                    bank_report: fields.bank.value,
+                    cash_report: fields.cash.value,
+                }
+            ]
+        })
+     
     }
-
-    useEffect(() => {
-        console.log(fields);
-    }, [fields])
 
     return (
         <Modal
