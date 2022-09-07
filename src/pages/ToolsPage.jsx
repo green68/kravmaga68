@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react"
 import { Button } from "react-bootstrap"
 import { BsDownload } from "react-icons/bs"
-import { FaExclamation, FaFileDownload, FaFileUpload } from "react-icons/fa"
+import { FaExclamation, FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import Validation from "../components/Validation"
 import "./ToolsPage.css"
 
@@ -32,19 +32,22 @@ const ToolsPage = (props) => {
     resetDatas: {
       title: "Effacer les données",
       message: "Cette action effacera toutes les données!",
-      button: "danger",
+      color: "danger",
+      icon: <FaTrashRestore />,
       callback: resetDatas
     },
     loadDatas: {
       title: "Charger des données",
       message: "Cette action remplacera les données actuelles!",
-      button: "danger",
+      color: "danger",
+      icon: <FaFileUpload />,
       callback: loadDatas
     },
     saveDatas: {
       title: "Enregistrer les données",
       message: "Cette action enregistrera les données actuelles dans un fichier au format JSON!",
-      button: "primary",
+      color: "success",
+      icon: <FaFileDownload />,
       callback: saveDatas
     },
   }
@@ -58,7 +61,7 @@ const ToolsPage = (props) => {
     const target = event.currentTarget
     target.blur()
     setToolsDefinitions(toolsDefinitionsDatas[target.id])
-    setShowValidation(true)   
+    setShowValidation(true)
   }
   const validationClose = () => {
     setShowValidation(false)
@@ -75,24 +78,28 @@ const ToolsPage = (props) => {
             openValidation(e)
           }}
         >
-          <FaExclamation />
-          Effacer les données
+          {toolsDefinitionsDatas.resetDatas.icon}
+          {toolsDefinitionsDatas.resetDatas.title}
         </Button>
         <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
           id="loadDatas"
           onClick={(e) => {
             openValidation(e)
           }}>
-          <FaFileUpload />
-          Charger les données
+          {toolsDefinitionsDatas.loadDatas.icon}
+          {toolsDefinitionsDatas.loadDatas.title}
+          {/* <FaFileUpload />
+          Charger les données */}
         </Button>
         <Button size="lg" variant="outline-success" className="btn-menu btn-tools"
           id="saveDatas"
           onClick={(e) => {
             openValidation(e)
           }}>
-          <FaFileDownload />
-          Sauvegarder les données
+          {toolsDefinitionsDatas.saveDatas.icon}
+          {toolsDefinitionsDatas.saveDatas.title}
+          {/* <FaFileDownload />
+          Sauvegarder les données */}
         </Button>
 
       </div>
