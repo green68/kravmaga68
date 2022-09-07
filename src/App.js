@@ -73,9 +73,8 @@ export default function App() {
   };
 
 
-  const userInitialize = (userDatas) => {
+  const userUpdate = (userDatas) => {
     setUser(new User(userDatas))
-    
   }
 
   // for resize page 
@@ -179,7 +178,7 @@ export default function App() {
         </NavLink>
       </Footer>
 
-      { <UserInit show={!user.name} handleInit={userInitialize}/> }
+      { <UserInit show={!user.name} handleInit={userUpdate}/> }
 
     </div>
 
