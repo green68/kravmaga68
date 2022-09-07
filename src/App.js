@@ -58,7 +58,7 @@ export default function App() {
   // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
-  const [year, setYear] = useState(user.years?.getLast());
+  const [year, setYear] = useState(user.name ? user.years?.getLast() : null );
 
   const changePage = (e) => {
     e.preventDefault();
@@ -99,7 +99,7 @@ export default function App() {
 
   // update year and saveToLocale after user change
   useEffect(() => {
-    setYear(user.years?.getLast())
+    setYear(user.name ? user.years?.getLast() : null)
     datas.saveToLocale(user)
   }, [user])
 
