@@ -1,5 +1,5 @@
 
-export const isJSON = datas => {
+const isJSON = datas => {
     try {
         JSON.parse(datas)
         return true
@@ -9,4 +9,18 @@ export const isJSON = datas => {
 }
 
 const Pathname = "kravmaga68/"
-export const pathTo = menu => Pathname + menu
+const pathTo = menu => Pathname + menu
+
+const downloadFile = (content, fileName, contentType) => {
+    var a = document.createElement("a");
+    var file = new Blob([content], {type: contentType});
+    a.href = URL.createObjectURL(file);
+    a.download = fileName;
+    a.click();
+}
+
+export {
+    downloadFile,
+    isJSON,
+    pathTo
+}
