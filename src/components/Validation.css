@@ -7,7 +7,9 @@
     aspect-ratio: 1/1;
     border-radius: 50%;
     left: 50%;
-    transform: translate(-50%, -30%);
+    /* old synthaxe */
+    /* transform: translate(-50%, -30%); */
+    translate: -50% -30%;
     color: var(--bs-light);
 }
 
