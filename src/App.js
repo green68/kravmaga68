@@ -23,16 +23,7 @@ import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
 import { User } from "./classes/user";
 import ToolsPage from "./pages/ToolsPage";
-
-const Menu = {
-  Home: "home",
-  Balance: "balance",
-  Bank: "bank",
-  Cash: "cash",
-  Year: "year",
-  Tools: "tools"
-};
-
+import { Menu } from "./utilities/Menu";
 
 console.clear()
 
