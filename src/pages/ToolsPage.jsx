@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
 import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 import Validation from "../components/Validation"
+import { pathTo } from "../utilities/functions"
+import { Menu } from "../utilities/Menu"
 import "./ToolsPage.css"
 
 const ToolsPage = ({ handleUpdate }) => {
+  let navigate = useNavigate();
   const [showValidation, setShowValidation] = useState(false)
   const [toolsDefinitions, setToolsDefinitions] = useState({
     title: "Effacer les données",
@@ -19,6 +23,7 @@ const ToolsPage = ({ handleUpdate }) => {
       years: []
     })
     validationClose()
+    navigate(pathTo(Menu.Home));
   }
   const loadDatas = () => {
     console.log("loadDatas");
