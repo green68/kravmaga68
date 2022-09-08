@@ -4,7 +4,7 @@ import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import Validation from "../components/Validation"
 import { datas } from "../datas/datas"
-import { pathTo } from "../utilities/Functions"
+import { objectToArray, pathTo } from "../utilities/Functions"
 import { Menu } from "../utilities/Menu"
 import "./ToolsPage.css"
 
@@ -35,6 +35,7 @@ const ToolsPage = ({ handleUpdate }) => {
     datas.saveToFile()
     validationClose()
   }
+
   const toolsDefinitionsDatas = {
     resetDatas: {
       title: "Effacer les données",
@@ -70,8 +71,28 @@ const ToolsPage = ({ handleUpdate }) => {
     setToolsDefinitions(toolsDefinitionsDatas[target.id])
     setShowValidation(true)
   }
+
   const validationClose = () => {
     setShowValidation(false)
+  }
+
+  const ButtonsTool = ({ datas }) => {
+    const listButtons = datas.map(data =>
+      <Button
+        key={data[0]}
+        size="lg"
+        variant={`outline-${data[1].color}`}
+        className="btn-menu btn-tools"
+        id={data[0]}
+        onClick={openValidation}
+      >
+        {data[1].icon}
+        {data[1].title}
+      </Button>
+    )
+    return (
+      <>{listButtons}</>
+    )
   }
 
   return (
@@ -79,33 +100,7 @@ const ToolsPage = ({ handleUpdate }) => {
       <h1 className="text-center p-2">Outils</h1>
       <div className="container d-flex flex-column align-items-center p-2 gap-4" >
 
-        <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
-          id="resetDatas"
-          onClick={(e) => {
-            openValidation(e)
-          }}
-        >
-          {toolsDefinitionsDatas.resetDatas.icon}
-          {toolsDefinitionsDatas.resetDatas.title}
-        </Button>
-
-        <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
-          id="loadDatas"
-          onClick={(e) => {
-            openValidation(e)
-          }}>
-          {toolsDefinitionsDatas.loadDatas.icon}
-          {toolsDefinitionsDatas.loadDatas.title}
-        </Button>
-
-        <Button size="lg" variant="outline-success" className="btn-menu btn-tools"
-          id="saveDatas"
-          onClick={(e) => {
-            openValidation(e)
-          }}>
-          {toolsDefinitionsDatas.saveDatas.icon}
-          {toolsDefinitionsDatas.saveDatas.title}
-        </Button>
+        <ButtonsTool datas={objectToArray({ ...toolsDefinitionsDatas })} />
 
       </div>
       <Validation
