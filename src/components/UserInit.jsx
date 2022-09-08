@@ -7,12 +7,13 @@ import { useState } from "react";
 
 const UserInit = ({ show, handleInit }) => {
 
-    const [fields, setFields] = useState({
+    const fieldsDatas = {
         name: { valid: null, value: "" },
         date: { valid: true, value: new Date().getFullYear() },
         bank: { valid: null, value: "" },
         cash: { valid: null, value: "" }
-    })
+    }
+    const [fields, setFields] = useState(fieldsDatas)
     const [isValid, setIsValid] = useState(false);
 
     const isTargetValid = (target, value) => {
@@ -65,6 +66,7 @@ const UserInit = ({ show, handleInit }) => {
                 }
             ]
         })
+        setFields(fieldsDatas)
     }
 
     return (
