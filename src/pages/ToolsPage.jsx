@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap"
 import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import Validation from "../components/Validation"
+import { datas } from "../datas/datas"
 import { pathTo } from "../utilities/functions"
 import { Menu } from "../utilities/Menu"
 import "./ToolsPage.css"
@@ -31,6 +32,7 @@ const ToolsPage = ({ handleUpdate }) => {
   }
   const saveDatas = () => {
     console.log("saveDatas");
+    datas.saveToFile()
     validationClose()
   }
   const toolsDefinitionsDatas = {
