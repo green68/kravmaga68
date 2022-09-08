@@ -3,29 +3,24 @@ import "./Validation.css"
 
 const Validation = ({ show, close, datas }) => {
 
-
-
     return (
-        // TODO: implement logo like 
-        // https://www.tutorialrepublic.com/snippets/preview.php?topic=bootstrap&file=simple-success-confirmation-popup
         <Modal
             show={show}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            {/* <Modal.Header className={`bg-${datas.color}`}> */}
-            <Modal.Header className={`bg-${datas.color} validation-modal-header`} >
+            <Modal.Header >
                 <div className={`validation-icon bg-${datas.color}`}>{datas.icon}</div> 
-                <Modal.Title>{datas.title}</Modal.Title>
                 <CloseButton variant="white" onClick={close}/>
             </Modal.Header>
 
-            <Modal.Body>
+            <Modal.Body className="text-center">
+                <h1 className={`pb-4 text-${datas.color}`} >{datas.title}</h1>
                 {datas.message}
             </Modal.Body>
 
-            <Modal.Footer>
+            <Modal.Footer className="pt-4">
                 <Button
                     variant={datas.color}
                     onClick={() => datas.callback()}

@@ -1,15 +1,11 @@
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import { Button } from "react-bootstrap"
-import { BsDownload } from "react-icons/bs"
-import { FaExclamation, FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
+import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import Validation from "../components/Validation"
 import "./ToolsPage.css"
 
-
-
 const ToolsPage = (props) => {
   const [showValidation, setShowValidation] = useState(false)
-  const [validationTitle, setValidationTitle] = useState("Validation")
   const [toolsDefinitions, setToolsDefinitions] = useState({
     title: "Effacer les données",
     message: "Cette action effacera toutes les données!",
@@ -31,21 +27,21 @@ const ToolsPage = (props) => {
   const toolsDefinitionsDatas = {
     resetDatas: {
       title: "Effacer les données",
-      message: "Cette action effacera toutes les données!",
+      message: "Cette action effacera toutes les données.",
       color: "danger",
       icon: <FaTrashRestore />,
       callback: resetDatas
     },
     loadDatas: {
       title: "Charger des données",
-      message: "Cette action remplacera les données actuelles!",
+      message: "Cette action remplacera les données actuelles.",
       color: "danger",
       icon: <FaFileUpload />,
       callback: loadDatas
     },
     saveDatas: {
       title: "Enregistrer les données",
-      message: "Cette action enregistrera les données actuelles dans un fichier au format JSON!",
+      message: "Cette action enregistrera les données actuelles dans un fichier au format JSON.",
       color: "success",
       icon: <FaFileDownload />,
       callback: saveDatas
@@ -67,11 +63,11 @@ const ToolsPage = (props) => {
     setShowValidation(false)
   }
 
-
   return (
     <div className="tools p-3">
       <h1 className="text-center p-2">Outils</h1>
       <div className="container d-flex flex-column align-items-center p-2 gap-4" >
+        
         <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
           id="resetDatas"
           onClick={(e) => {
@@ -81,6 +77,7 @@ const ToolsPage = (props) => {
           {toolsDefinitionsDatas.resetDatas.icon}
           {toolsDefinitionsDatas.resetDatas.title}
         </Button>
+        
         <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
           id="loadDatas"
           onClick={(e) => {
@@ -88,9 +85,8 @@ const ToolsPage = (props) => {
           }}>
           {toolsDefinitionsDatas.loadDatas.icon}
           {toolsDefinitionsDatas.loadDatas.title}
-          {/* <FaFileUpload />
-          Charger les données */}
         </Button>
+        
         <Button size="lg" variant="outline-success" className="btn-menu btn-tools"
           id="saveDatas"
           onClick={(e) => {
@@ -98,8 +94,6 @@ const ToolsPage = (props) => {
           }}>
           {toolsDefinitionsDatas.saveDatas.icon}
           {toolsDefinitionsDatas.saveDatas.title}
-          {/* <FaFileDownload />
-          Sauvegarder les données */}
         </Button>
 
       </div>
