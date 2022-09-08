@@ -1,4 +1,5 @@
 import { User } from "../classes/user";
+import { downloadFile } from "../utilities/functions";
 
 class Datas {
     constructor() {
@@ -19,18 +20,15 @@ class Datas {
         
         localStorage.setItem('user', userString)
     }
-    saveToFile(filename) {
-        console.log("dans saveToFile");
-        function download(content, fileName, contentType) {
-            var a = document.createElement("a");
-            var file = new Blob([content], {type: contentType});
-            a.href = URL.createObjectURL(file);
-            a.download = fileName;
-            a.click();
+    saveToFile(filename = null) {
+        if(!filename) {
+            const date = (new Date()).toLocaleString('fr-FR').replace(/[\/:\s]/ig,'-')
+            filename = `kompta-${date}.json`
+            console.log(`sauvegarde fichier : ${filename}`);
         }
-        
+      
         const datas = JSON.stringify(this.user, null, 3)
-        download(datas, filename, 'text/plain');
+        downloadFile(datas, filename, 'text/plain');
     }
     isLocale() {
         const resp = localStorage.getItem('user') ? true : false
