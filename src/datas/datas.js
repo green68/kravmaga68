@@ -22,7 +22,7 @@ class Datas {
     }
     saveToFile(filename = null) {
         if(!filename) {
-            const date = (new Date()).toLocaleString('fr-FR').replace(/[\/:\s]/ig,'-')
+            const date = (new Date()).toLocaleString('fr-FR').replace(/[/:\s]/ig,'-')
             filename = `kompta-${date}.json`
             console.log(`sauvegarde fichier : ${filename}`);
         }
