@@ -18,7 +18,7 @@ import BalancePage from "./pages/BalancePage";
 import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
-import { pathTo } from "./utilities/functions";
+import { pathTo } from "./utilities/Functions";
 import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
 import { User } from "./classes/user";

@@ -1,5 +1,5 @@
 import { Years } from "./years";
-import { isJSON } from "../utilities/functions";
+import { isJSON } from "../utilities/Functions";
 
 
 class User {

@@ -1,5 +1,5 @@
 import { User } from "../classes/user";
-import { downloadFile } from "../utilities/functions";
+import { downloadFile } from "../utilities/Functions";
 
 class Datas {
     constructor() {

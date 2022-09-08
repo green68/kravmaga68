@@ -4,7 +4,7 @@ import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
 import Validation from "../components/Validation"
 import { datas } from "../datas/datas"
-import { pathTo } from "../utilities/functions"
+import { pathTo } from "../utilities/Functions"
 import { Menu } from "../utilities/Menu"
 import "./ToolsPage.css"
 
