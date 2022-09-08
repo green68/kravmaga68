@@ -4,7 +4,7 @@ import { FaFileDownload, FaFileUpload, FaTrashRestore } from "react-icons/fa"
 import Validation from "../components/Validation"
 import "./ToolsPage.css"
 
-const ToolsPage = (props) => {
+const ToolsPage = ({ handleUpdate }) => {
   const [showValidation, setShowValidation] = useState(false)
   const [toolsDefinitions, setToolsDefinitions] = useState({
     title: "Effacer les données",
@@ -14,6 +14,10 @@ const ToolsPage = (props) => {
 
   const resetDatas = () => {
     console.log("resetDatas");
+    handleUpdate({
+      name: null,
+      years: []
+    })
     validationClose()
   }
   const loadDatas = () => {
@@ -67,7 +71,7 @@ const ToolsPage = (props) => {
     <div className="tools p-3">
       <h1 className="text-center p-2">Outils</h1>
       <div className="container d-flex flex-column align-items-center p-2 gap-4" >
-        
+
         <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
           id="resetDatas"
           onClick={(e) => {
@@ -77,7 +81,7 @@ const ToolsPage = (props) => {
           {toolsDefinitionsDatas.resetDatas.icon}
           {toolsDefinitionsDatas.resetDatas.title}
         </Button>
-        
+
         <Button size="lg" variant="outline-danger" className="btn-menu btn-tools"
           id="loadDatas"
           onClick={(e) => {
@@ -86,7 +90,7 @@ const ToolsPage = (props) => {
           {toolsDefinitionsDatas.loadDatas.icon}
           {toolsDefinitionsDatas.loadDatas.title}
         </Button>
-        
+
         <Button size="lg" variant="outline-success" className="btn-menu btn-tools"
           id="saveDatas"
           onClick={(e) => {
