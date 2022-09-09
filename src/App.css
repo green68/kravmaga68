@@ -1,19 +1,21 @@
+:root {
+  --clr-dark: rgb(25 25 25 / 1);
+  --clr-dark-blue: rgb(44 59 104 / 1);
+  --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --bs-btn-font-family: var(--bs-font-monospace);
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-:root {
-  --clr-dark: rgb(25 25 25 / 1);
-  --clr-dark-blue: rgb(44 59 104 / 1);
-}
 
 body {
   position: relative;
   color: white;
-
+  
   background: linear-gradient(135deg, var(--clr-dark), var(--clr-dark-blue));
-  font-family: sans-serif;
   overflow-y: hidden;
 }
 
@@ -25,7 +27,7 @@ button {
   appearance: none;
   font-size: 1.3rem;
   box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+  0px 18px 88px -4px rgba(24, 39, 75, 0.14);
   transition: all ease-in 0.1s;
   cursor: pointer;
   opacity: 0.9;
