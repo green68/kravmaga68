@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+import { isInputValid } from "../utilities/Functions";
 
 const UserInit = ({ show, handleInit }) => {
 
@@ -16,38 +17,14 @@ const UserInit = ({ show, handleInit }) => {
     const [fields, setFields] = useState(fieldsDatas)
     const [isValid, setIsValid] = useState(false);
 
-    const isTargetValid = (target, value) => {
-        const floatRegex = /^[+-]?\d+(\.\d{0,2})?$/
-        const pseudoRegex = /^([a-zA-Z0-9-_]{5,25})$/
-        // console.log(target);
-        switch (target) {
-            case "name":
-                if(!pseudoRegex.test(value[target].value)) return false
-                break;
-            // case "year":
-            //     // if (name.length < 5) return false
-            //     break;
-            case "bank":
-                if (!floatRegex.test(value[target].value)) return false
-                break;
-                case "cash":
-                if (!floatRegex.test(value[target].value)) return false
-                break;
-            default:
-                break;
-        }
-        return true
-    }
-
     const handleChange = (e) => {
-        let temp = {...fields}
+        let temp = { ...fields }
         temp[e.target.id].value = e.target.value
-
-        const valid = isTargetValid(e.target.id, temp)
+        const valid = isInputValid(e.target)
         temp[e.target.id].valid = valid
         setFields(temp)
         // validation button
-        if(fields.name.valid && fields.bank.valid && fields.cash.valid)  {
+        if (fields.name.valid && fields.bank.valid && fields.cash.valid) {
             setIsValid(true)
         } else {
             setIsValid(false)
@@ -72,7 +49,7 @@ const UserInit = ({ show, handleInit }) => {
     return (
         <Modal
             show={show}
-            size="sm"
+            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -82,18 +59,18 @@ const UserInit = ({ show, handleInit }) => {
 
             <Modal.Body>
                 <Form id="formInit" >
-                    
+
                     <Form.Group className="mb-3" >
                         <Form.Label>Nom d'utilisateur</Form.Label>
                         <Form.Control
                             id="name"
                             className={`input-control
-                            ${fields.name.valid === null ? "" : fields.name.valid ? "is-valid": "is-invalid"}
-                            `}
+                                ${fields.name.valid === null ? "" : fields.name.valid ? "is-valid" : "is-invalid"}
+                                `}
                             placeholder="Votre nom/peudo"
                             value={fields.name.value}
                             onChange={handleChange}
-                            // pattern="eric v"
+                            pattern={"pseudo"}
                             required
                             autoFocus
                         />
@@ -109,15 +86,16 @@ const UserInit = ({ show, handleInit }) => {
                             <option value="2">{(parseInt(fields.date.value) - 2).toString()}</option>
                         </Form.Select>
                     </Form.Group>
-                    
+
                     <Form.Group className="mb-3" >
                         <Form.Label>Report solde Banque</Form.Label>
                         <Form.Control
                             id="bank"
-                            className={fields.bank.valid === null ? "" : fields.bank.valid ? "is-valid": "is-invalid"}
+                            className={fields.bank.valid === null ? "" : fields.bank.valid ? "is-valid" : "is-invalid"}
                             placeholder="0.00"
                             value={fields.bank.value}
                             onChange={handleChange}
+                            pattern="float"
                             required
                         />
                     </Form.Group>
@@ -126,10 +104,11 @@ const UserInit = ({ show, handleInit }) => {
                         <Form.Label>Report solde Caisse</Form.Label>
                         <Form.Control
                             id="cash"
-                            className={fields.cash.valid === null ? "" : fields.cash.valid ? "is-valid": "is-invalid"}
+                            className={fields.cash.valid === null ? "" : fields.cash.valid ? "is-valid" : "is-invalid"}
                             placeholder="0.00"
                             value={fields.cash.value}
                             onChange={handleChange}
+                            pattern="float"
                             required
                         />
                     </Form.Group>
