@@ -27,8 +27,42 @@ const objectToArray = (obj) => {
     return datas
 }
 
+const InputPatterns = {
+    float: /^[+-]?\d+(\.\d{0,2})?$/i,
+    pseudo:  /^([a-zA-Z0-9-_]{5,25})$/i
+}
+/**
+ * 
+ * @param {HTMLElement} eventTarget 
+ * @returns {boolean}
+ */
+const isInputValid = (eventTarget) => {
+    if(!eventTarget?.pattern) {
+        console.log("Pas de pattern pour :",eventTarget);
+        if(eventTarget.required && eventTarget.value.trim() === "") return false
+        
+        return true
+    }
+
+    const pattern = InputPatterns[eventTarget.pattern]
+    if (pattern) {
+        if (!pattern.test(eventTarget.value)) return false
+
+        return true
+    }
+
+    try {
+        pattern = new RegExp(eventTarget.pattern, "i")
+        if (!pattern.test(eventTarget.value)) return false
+        return true
+        
+    } catch (error) {
+        throw new Error("Pattern invalide pour :", eventTarget)
+    }
+}
 export {
     downloadFile,
+    isInputValid,
     isJSON,
     objectToArray,
     pathTo
