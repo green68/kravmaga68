@@ -1,7 +1,7 @@
 :root {
-  --clr-dark: rgb(25 25 25 / 1);
-  --clr-dark-blue: rgb(44 59 104 / 1);
-  --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --clr-dark: rgba(25, 25, 25, 0.95);
+  --clr-dark-blue: rgb(31, 41, 71);
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-btn-font-family: var(--bs-font-monospace);
 }
 
@@ -14,7 +14,13 @@
 body {
   position: relative;
   color: white;
-  
+
+  /* background: linear-gradient(135deg,
+      var(--clr-dark-blue) 0%,
+      var(--clr-dark) 25%,
+      var(--clr-dark) 75%,
+      var(--clr-dark-blue) 100%); */
+
   background: linear-gradient(135deg, var(--clr-dark), var(--clr-dark-blue));
   overflow-y: hidden;
 }
@@ -27,7 +33,7 @@ button {
   appearance: none;
   font-size: 1.3rem;
   box-shadow: 0px 8px 28px -6px rgba(24, 39, 75, 0.12),
-  0px 18px 88px -4px rgba(24, 39, 75, 0.14);
+    0px 18px 88px -4px rgba(24, 39, 75, 0.14);
   transition: all ease-in 0.1s;
   cursor: pointer;
   opacity: 0.9;
@@ -47,6 +53,10 @@ a {
 a:hover {
   opacity: 1;
   text-decoration: none;
+}
+
+label {
+  font-weight: 300;
 }
 
 .main {
