@@ -118,7 +118,8 @@ const UserInit = ({ show, handleInit }) => {
 
             <Modal.Footer>
                 <Button form="formInit"
-                    className={`btn-dark ${isValid ? "" : "disabled"}`}
+                    variant="success"
+                    className={`${isValid ? "" : "disabled"}`}
                     onClick={saveForm}
                 >
                     Enregistrer
@@ -126,7 +127,6 @@ const UserInit = ({ show, handleInit }) => {
             </Modal.Footer>
         </Modal>
     )
-
 }
 
 export { UserInit as default };
