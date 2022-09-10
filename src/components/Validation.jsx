@@ -15,8 +15,8 @@ const Validation = ({ show, close, datas }) => {
                 <CloseButton variant="white" onClick={close}/>
             </Modal.Header>
 
-            <Modal.Body className="text-center">
-                <h1 className={`pb-4 text-${datas.color}`} >{datas.title}</h1>
+            <Modal.Body className="">
+                <h1 className={`pb-4 text-${datas.color} text-center`} >{datas.title}</h1>
                 {datas.message}
             </Modal.Body>
 
