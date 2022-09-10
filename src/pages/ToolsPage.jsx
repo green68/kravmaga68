@@ -32,6 +32,7 @@ const ToolsPage = ({ handleUpdate }) => {
   const loadDatas = () => {
     console.log("loadDatas");
     validationClose()
+    // navigate(pathTo(Menu.Home));
   }
   const saveDatas = () => {
     console.log("saveDatas");
@@ -41,6 +42,7 @@ const ToolsPage = ({ handleUpdate }) => {
 
   const testDatas = () => {
     console.log("test ok")
+    validationClose()
   }
   const toolsDefinitionsDatas = [
     {
@@ -78,7 +80,7 @@ const ToolsPage = ({ handleUpdate }) => {
           </Container>
           <Form.Group className="mb-3 text-left mw-50">
             <Form.Label>Nom du fichier (optionel)</Form.Label>
-              <Form.Control type="text" placeholder="Mon_Fichier-2022-06-01" pattern="/[a-zA-Z0-9-_]{5,30}/" />
+              <Form.Control type="text" placeholder="Mon_Fichier-2022-06-01" pattern="/[a-zA-Z0-9-_]{5,30}/" autoFocus/>
             <Form.Text className="text-muted">
               Caractères alpha-numériques avec tirets mais sans espace.
             </Form.Text>
