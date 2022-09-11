@@ -1,17 +1,15 @@
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
 import { FaFileDownload, FaFileUpload, FaTrash } from "react-icons/fa"
-import { useNavigate } from "react-router-dom"
 import DownloadDatas from "../components/DownloadDatas"
+import ResetDatas from "../components/ResetDatas"
 import Validation from "../components/Validation"
-import { pathTo } from "../utilities/Functions"
-import { Menu } from "../utilities/Menu"
 import "./ToolsPage.css"
 
 const ToolsPage = ({ handleUpdate }) => {
-  let navigate = useNavigate();
 
   const [isShowSaveDatas, setIsShowSaveDatas] = useState(false)
+  const [isShowResetDatas, setIsShowResetDatas] = useState(false)
   const [showValidation, setShowValidation] = useState(false)
   const [toolsDefinitions, setToolsDefinitions] = useState({
     name: "",
@@ -22,15 +20,6 @@ const ToolsPage = ({ handleUpdate }) => {
     callback: null
   })
 
-  const resetDatas = () => {
-    console.log("resetDatas");
-    handleUpdate({
-      name: null,
-      years: []
-    })
-    validationClose()
-    navigate(pathTo(Menu.Home));
-  }
   const loadDatas = () => {
     console.log("loadDatas");
     validationClose()
@@ -42,14 +31,6 @@ const ToolsPage = ({ handleUpdate }) => {
     validationClose()
   }
   const toolsDefinitionsDatas = [
-    {
-      name: "resetDatas",
-      title: "Effacer les données",
-      message: "Cette action effacera toutes les données.",
-      color: "danger",
-      icon: <FaTrash />,
-      callback: resetDatas
-    },
     {
       name: "loadDatas",
       title: "Charger des données",
@@ -123,6 +104,7 @@ const ToolsPage = ({ handleUpdate }) => {
 
   return (
     <>
+      {isShowResetDatas && <ResetDatas onClose={() => setIsShowResetDatas(false)} onReset={(datas) => handleUpdate(datas)} />}
       {isShowSaveDatas && <DownloadDatas onClose={() => setIsShowSaveDatas(false)} />}
       <div className="tools p-3">
         <h1 className="text-center p-2">Outils</h1>
@@ -134,6 +116,18 @@ const ToolsPage = ({ handleUpdate }) => {
             datas={toolsDefinitions}
             onClose={validationClose}
           />
+          <Button
+            size="lg"
+            variant={`outline-danger`}
+            className="btn-menu btn-tools"
+            onClick={(e) => {
+              e.currentTarget.blur();
+              setIsShowResetDatas(true)
+            }}
+          >
+            {<FaTrash />}
+            Effacer les données
+          </Button>
           <Button
             size="lg"
             variant={`outline-success`}
