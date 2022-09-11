@@ -5,11 +5,6 @@ import { pathTo } from "../utilities/Functions";
 import { Menu } from "../utilities/Menu";
 import Validation from "./Validation";
 
-/**
- * 
- * @param {{function, function}} {onClose, onReset }
- * @returns 
- */
 const ResetDatas = ({ onClose, onReset }) => {
     let navigate = useNavigate();
 
@@ -27,15 +22,6 @@ const ResetDatas = ({ onClose, onReset }) => {
         navigate(pathTo(Menu.Home));
     }
 
-    // const datas = {
-    //     name: "resetDatas",
-    //     // title: "Effacer les données",
-    //     // message: "Cette action effacera toutes les données.",
-    //     // color: "danger",
-    //     // icon: <FaTrash />,
-    //     callback: resetDatas
-    // }
-
     const handleClose = (e) => {
         console.log("handleClose dans ResetDatas");
         setisShow(false)
@@ -50,10 +36,10 @@ const ResetDatas = ({ onClose, onReset }) => {
                 icon={<FaTrash />}
                 title={"Effacer les données"}
                 color={"danger"}
-                children={"Cette action effacera toutes les données."}
                 callback={resetDatas}
-                // datas={datas}
-            />
+            >
+            <p>Cette action effacera toutes les données.</p>
+            </Validation>
         </>
     )
 }
