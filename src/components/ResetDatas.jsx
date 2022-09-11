@@ -10,7 +10,7 @@ import Validation from "./Validation";
  * @param {{function, function}} {onClose, onReset }
  * @returns 
  */
-const ResetDatas = ({onClose, onReset}) => {
+const ResetDatas = ({ onClose, onReset }) => {
     let navigate = useNavigate();
 
     const [isShow, setisShow] = useState(true)
@@ -21,20 +21,20 @@ const ResetDatas = ({onClose, onReset}) => {
         onReset({
             name: null,
             years: []
-          })
+        })
         setisShow(false)
         onClose()
         navigate(pathTo(Menu.Home));
     }
 
-    const datas = {
-        name: "resetDatas",
-        title: "Effacer les données",
-        message: "Cette action effacera toutes les données.",
-        color: "danger",
-        icon: <FaTrash />,
-        callback: resetDatas
-      }
+    // const datas = {
+    //     name: "resetDatas",
+    //     // title: "Effacer les données",
+    //     // message: "Cette action effacera toutes les données.",
+    //     // color: "danger",
+    //     // icon: <FaTrash />,
+    //     callback: resetDatas
+    // }
 
     const handleClose = (e) => {
         console.log("handleClose dans ResetDatas");
@@ -44,7 +44,16 @@ const ResetDatas = ({onClose, onReset}) => {
 
     return (
         <>
-            <Validation show={isShow} onClose={handleClose} datas={datas} />
+            <Validation
+                show={isShow}
+                onClose={handleClose}
+                icon={<FaTrash />}
+                title={"Effacer les données"}
+                color={"danger"}
+                children={"Cette action effacera toutes les données."}
+                callback={resetDatas}
+                // datas={datas}
+            />
         </>
     )
 }

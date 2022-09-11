@@ -18,25 +18,33 @@ const DownloadDatas = ({onClose}) => {
         onClose()
     }
 
-    const datas = {
-        name: "saveDatas",
-        title: "Enregistrer les données",
-        message: "Cette action enregistrera les données actuelles dans un fichier au format JSON.",
-        color: "success",
-        icon: <FaFileDownload />,
-        callback: saveToFile
-    }
-
-
     const handleClose = (e) => {
         console.log("handleClose dans DownloadDatas");
         setisShow(false)
         onClose()
     }
-
+    
+    // const datas = {
+    //     name: "saveDatas",
+    //     // title: "Enregistrer les données",
+    //     // message: "Cette action enregistrera les données actuelles dans un fichier au format JSON.",
+    //     // color: "success",
+    //     // icon: <FaFileDownload />,
+    //     // callback: saveToFile
+    // }
+    
     return (
         <>
-            <Validation show={isShow} onClose={handleClose} datas={datas} />
+            <Validation 
+                show={isShow} 
+                onClose={handleClose} 
+                icon={<FaFileDownload/>}
+                title={"Enregistrer les données"}
+                color={"success"}
+                children={"Cette action enregistrera les données actuelles dans un fichier au format JSON."}
+                callback={saveToFile}
+                // datas={datas} 
+            />
         </>
     )
 }

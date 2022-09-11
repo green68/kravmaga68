@@ -18,17 +18,26 @@ function UploadDatas({ onClose, onUpload }) {
         onClose()
     }
 
-    const datas = {
-        name: "uploadDatas",
-        title: "Charger des données",
-        message: "Cette action remplacera les données actuelles.",
-        color: "danger",
-        icon: <FaFileUpload />,
-        callback: loadFromFile
-    }
+    // const datas = {
+    //     name: "uploadDatas",
+    //     // title: "Charger des données",
+    //     // message: "Cette action remplacera les données actuelles.",
+    //     // color: "danger",
+    //     // icon: <FaFileUpload />,
+    //     // callback: loadFromFile
+    // }
 
     return (
-        <Validation show={isShow} onClose={handleClose} datas={datas} />
+        <Validation 
+            show={isShow} 
+            onClose={handleClose} 
+            icon={<FaFileUpload/>}
+            title={"Charger des données"}
+            color={"danger"}
+            children={"Cette action remplacera les données actuelles."}
+            callback={loadFromFile}
+            // datas={datas} 
+        />
     )
 }
 
