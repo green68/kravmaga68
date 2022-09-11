@@ -3,7 +3,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { datas } from "./datas/datas";
+import { DatasClass } from "./datas/datas";
 import { NavLink, useNavigate, Routes, Route, Navigate } from "react-router-dom";
 import {
   FaBalanceScale,
@@ -34,10 +34,10 @@ console.clear()
 // datas.saveToFile('kravmaga.json')
 
 // TODO: if already save no rewrite, just saved initially ???
-if (datas.isLocale()) {
-  datas.getUserFromLocale()
+if (DatasClass.isLocale()) {
+  DatasClass.getUserFromLocale()
 } else {
-  datas.saveToLocale()
+  DatasClass.saveToLocale()
 }
 
 export default function App() {
@@ -45,7 +45,7 @@ export default function App() {
   let navigate = useNavigate();
 
   // eslint-disable-next-line
-  const [user, setUser] = useState(datas.getUser())
+  const [user, setUser] = useState(DatasClass.getUser())
   // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
@@ -91,7 +91,7 @@ export default function App() {
   // update year and saveToLocale after user change
   useEffect(() => {
     setYear(user.name ? user.years?.getLast() : null)
-    datas.saveToLocale(user)
+    DatasClass.saveToLocale(user)
   }, [user])
 
   return (
