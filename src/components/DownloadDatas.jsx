@@ -29,7 +29,7 @@ const DownloadDatas = ({onClose}) => {
 
 
     const handleClose = (e) => {
-        console.log("handleClose dans SaveDatas");
+        console.log("handleClose dans DownloadDatas");
         setisShow(false)
         onClose()
     }
