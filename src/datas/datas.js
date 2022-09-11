@@ -36,8 +36,8 @@ class Datas {
     }
 }
 
-const datas = new Datas()
+const DatasClass = new Datas()
 
 export {
-    datas
+    DatasClass
 }
