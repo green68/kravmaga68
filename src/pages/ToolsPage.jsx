@@ -3,6 +3,7 @@ import { Button, Container, Form } from "react-bootstrap"
 import { FaFileDownload, FaFileUpload, FaTrash } from "react-icons/fa"
 import DownloadDatas from "../components/DownloadDatas"
 import ResetDatas from "../components/ResetDatas"
+import UploadDatas from "../components/UploadDatas"
 import Validation from "../components/Validation"
 import "./ToolsPage.css"
 
@@ -10,6 +11,8 @@ const ToolsPage = ({ handleUpdate }) => {
 
   const [isShowSaveDatas, setIsShowSaveDatas] = useState(false)
   const [isShowResetDatas, setIsShowResetDatas] = useState(false)
+  const [isShowUploadDatas, setIsShowUploadDatas] = useState(false)
+  
   const [showValidation, setShowValidation] = useState(false)
   const [toolsDefinitions, setToolsDefinitions] = useState({
     name: "",
@@ -20,25 +23,11 @@ const ToolsPage = ({ handleUpdate }) => {
     callback: null
   })
 
-  const loadDatas = () => {
-    console.log("loadDatas");
-    validationClose()
-    // navigate(pathTo(Menu.Home));
-  }
-
   const testDatas = () => {
     console.log("test ok")
     validationClose()
   }
   const toolsDefinitionsDatas = [
-    {
-      name: "loadDatas",
-      title: "Charger des données",
-      message: "Cette action remplacera les données actuelles.",
-      color: "danger",
-      icon: <FaFileUpload />,
-      callback: loadDatas
-    },
     {
       name: "test",
       title: "Juste un titre",
@@ -105,7 +94,9 @@ const ToolsPage = ({ handleUpdate }) => {
   return (
     <>
       {isShowResetDatas && <ResetDatas onClose={() => setIsShowResetDatas(false)} onReset={(datas) => handleUpdate(datas)} />}
+      {isShowUploadDatas && <UploadDatas onClose={() => setIsShowUploadDatas(false)} onUpload={(datas) => handleUpdate(datas)} />}
       {isShowSaveDatas && <DownloadDatas onClose={() => setIsShowSaveDatas(false)} />}
+      
       <div className="tools p-3">
         <h1 className="text-center p-2">Outils</h1>
         <div className="container d-flex flex-column align-items-center p-2 gap-4" >
@@ -116,6 +107,7 @@ const ToolsPage = ({ handleUpdate }) => {
             datas={toolsDefinitions}
             onClose={validationClose}
           />
+          
           <Button
             size="lg"
             variant={`outline-danger`}
@@ -128,6 +120,21 @@ const ToolsPage = ({ handleUpdate }) => {
             {<FaTrash />}
             Effacer les données
           </Button>
+          
+          <Button
+            size="lg"
+            variant={`outline-danger`}
+            className="btn-menu btn-tools"
+            onClick={(e) => {
+              e.currentTarget.blur();
+              setIsShowUploadDatas(true)
+            }}
+          >
+            {<FaFileUpload />}
+            Charger des données
+          </Button>
+
+
           <Button
             size="lg"
             variant={`outline-success`}
