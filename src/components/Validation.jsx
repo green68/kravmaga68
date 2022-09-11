@@ -1,7 +1,14 @@
 import { Button, CloseButton, Modal } from "react-bootstrap"
 import "./Validation.css"
 
-const Validation = ({ show, close, datas }) => {
+
+
+/**
+ * 
+ * @param {{boolean, function, object}} props
+ * @returns 
+ */
+const Validation = ({ show, onClose, datas }) => {
 
     return (
         <Modal
@@ -12,7 +19,7 @@ const Validation = ({ show, close, datas }) => {
         >
             <Modal.Header >
                 <div className={`validation-icon bg-${datas.color}`}>{datas.icon}</div> 
-                <CloseButton variant="white" onClick={close}/>
+                <CloseButton variant="white" onClick={onClose}/>
             </Modal.Header>
 
             <Modal.Body className="">
