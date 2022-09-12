@@ -6,7 +6,12 @@
 * [jsonvisio.com](https://jsonvisio.com/editor) : pour édition graphique des fichiers json
 
 ## Suivi :
+    TODO:
+        - disabled validation if error in UserInit.jsx
+        - drop file in DropFile.jsx
 
+    2022-09-10
+        - upload datas
     2022-09-08 :
         - download datas
         - reset datas
