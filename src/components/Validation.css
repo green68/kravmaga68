@@ -1,4 +1,4 @@
-.validation-icon {
+.modal-icon {
     position: absolute;
     display: grid;
     place-items: center;
@@ -23,4 +23,5 @@
 
 .modal-content{
     outline: var(--modal-outline, transparent);
+    margin-top: 4rem;
 }
