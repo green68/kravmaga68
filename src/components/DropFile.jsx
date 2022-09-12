@@ -33,7 +33,7 @@ const DropFile = ({handleDatas}) => {
         </Form.Label>
       </Form.Group>
 
-      <label className="drop-zone">
+      {/* <label className="drop-zone">
         {fileInput ? fileInput : 'Click Me'}
         <input
           type={"file"}
@@ -41,7 +41,7 @@ const DropFile = ({handleDatas}) => {
           style={{ display: "none" }}
         />
 
-      </label>
+      </label> */}
     </>
   )
 }
