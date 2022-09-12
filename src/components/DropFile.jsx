@@ -8,10 +8,13 @@ const DropFile = ({handleDatas}) => {
 
   const handleFileInput = (e) => {
     // console.log(e.target.files[0]);
-    setFileInput(e.target.files[0].name)
-    const reader = new FileReader()
-    reader.onload = onReaderLoad
-    reader.readAsText(e.target.files[0])
+    if (e.target.files.length > 0) {
+      setFileInput(e.target.files[0].name)
+      const reader = new FileReader()
+      reader.onload = onReaderLoad
+      reader.readAsText(e.target.files[0])
+
+    }
   }
 
   const onReaderLoad = (e) => {
@@ -22,12 +25,14 @@ const DropFile = ({handleDatas}) => {
   return (
 
     <>
-      <Form.Group controlId="formFile" className="mb-3">
+      <Form.Group controlId="formFile" className="d-flex w-100 justify-content-center">
         <Form.Label className="drop-zone" >
-          {fileInput ? fileInput : 'Cliquez'}
+          {!fileInput ? 'Cliquez' : <>
+            <div className="drop-zone__thumb" data-label={fileInput}></div>
+          </>}
           <Form.Control 
             type="file" 
-            style={{ display: "none"}} 
+            className="drop-zone__input"
             onChange={handleFileInput}
           />
         </Form.Label>
