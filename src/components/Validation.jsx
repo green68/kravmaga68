@@ -9,6 +9,7 @@ const Validation = ({ show, onClose, icon, title, color, callback, isButtonDisab
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            style={{'--modal-outline' : `1px solid var(--bs-${color})`}}
         >
             <Modal.Header >
                 <div className={`validation-icon bg-${color}`}>{icon}</div> 
