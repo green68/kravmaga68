@@ -12,7 +12,7 @@ const Validation = ({ show, onClose, icon, title, color, callback, isButtonDisab
             style={{'--modal-outline' : `1px solid var(--bs-${color})`}}
         >
             <Modal.Header >
-                <div className={`validation-icon bg-${color}`}>{icon}</div> 
+                <div className={`modal-icon bg-${color}`}>{icon}</div> 
                 <CloseButton variant="white" onClick={onClose}/>
             </Modal.Header>
 
