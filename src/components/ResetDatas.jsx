@@ -12,7 +12,7 @@ const ResetDatas = ({ onClose, onReset }) => {
 
     const resetDatas = () => {
         console.log("resetDatas");
-        debugger
+        // debugger
         onReset({
             name: null,
             years: []
