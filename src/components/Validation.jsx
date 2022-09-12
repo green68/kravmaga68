@@ -1,14 +1,7 @@
 import { Button, CloseButton, Modal } from "react-bootstrap"
 import "./Validation.css"
 
-
-
-/**
- * 
- * @param {{boolean, function, object}} props
- * @returns 
- */
-const Validation = ({ show, onClose, icon, title, color, children, callback }) => {
+const Validation = ({ show, onClose, icon, title, color, callback, isButtonDisabled = false, children }) => {
 
     return (
         <Modal
@@ -31,6 +24,8 @@ const Validation = ({ show, onClose, icon, title, color, children, callback }) =
                 <Button
                     variant={color}
                     onClick={() => callback()}
+                    disabled = {isButtonDisabled ? 'disabled' : ''}
+                    // {isButtonDisabled ? 'disabled' : ''}
                 >
                     Valider
                 </Button>
