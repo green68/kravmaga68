@@ -1,8 +1,8 @@
 .drop-zone {
-    max-width: 20ch;
     min-width: 90%;
     height: 7rem;
-    padding: 25px;
+    margin: 0;
+    padding: .5rem;
     display: flex;
     align-items: center;
     justify-content: center;
