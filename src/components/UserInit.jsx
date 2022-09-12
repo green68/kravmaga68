@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { isInputValid } from "../utilities/Functions";
+import { FaCog } from "react-icons/fa"
 
 const UserInit = ({ show, handleInit }) => {
 
@@ -52,14 +53,16 @@ const UserInit = ({ show, handleInit }) => {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            style={{'--modal-outline' : `1px solid var(--bs-light)`}}
         >
             <Modal.Header >
-                <Modal.Title>Initialisation</Modal.Title>
+                <div className={`modal-icon bg-light`} style={{color: "var(--bs-dark)"}} ><FaCog /></div> 
             </Modal.Header>
 
             <Modal.Body>
                 <Form id="formInit" >
 
+                    <Modal.Title className="pb-4 text-center">Initialisation</Modal.Title>
                     <Form.Group className="mb-3" >
                         <Form.Label>Nom d'utilisateur</Form.Label>
                         <Form.Control
