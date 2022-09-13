@@ -99,8 +99,9 @@ const FormCashItem = ({ onClose, onChange }) => {
             <Validation
                 show={isShow}
                 onClose={handleClose}
-                icon={<FaPiggyBank className="text-black"/>}
+                icon={<FaPiggyBank />}
                 title={"Mouvement de caisse"}
+                style={{'--modal-outline-color' : `var(--bs-light`}}
                 color={"light"}
                 callback={updateDatas}
             >

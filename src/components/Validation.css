@@ -6,11 +6,14 @@
     width: 6rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    border: 1px solid var(--modal-outline-color);
     left: 50%;
     /* old synthaxe */
     /* transform: translate(-50%, -30%); */
     translate: -50% -30%;
-    color: var(--bs-light);
+    background-color: var(--bs-dark);
+    color: var(--modal-outline-color);
+    /* color: var(--bs-light); */
 }
 
 .modal.fade .modal-dialog {
@@ -22,6 +25,6 @@
 }
 
 .modal-content{
-    outline: var(--modal-outline, transparent);
+    outline: 1px solid var(--modal-outline-color, transparent);
     margin-top: 4rem;
 }
