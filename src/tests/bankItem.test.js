@@ -10,7 +10,6 @@ const datas = {
     "checked": false
 }
 
-
 test("create empty", () => {
     const data = { ...datas }
     const bankItem = new BankItem(data)
@@ -18,15 +17,31 @@ test("create empty", () => {
     expect(bankItem.date).toBeInstanceOf(Date)
 })
 
-describe.each([
-    {value:{ id: "01", mvt: "x0" }, expected: /0.00/}, 
-    {value:{ id: "01", mvt: "" }, expected: "0.00"}, 
-    {value:{ id: "01", mvt: "2000" }, expected: "2000.00"}, 
-    {value:{ id: "01", mvt: "-1" }, expected: "-1.00"}
-])("new BankItem($value).getMvt()", ({value, expected}) =>
-    test(`retourne ${expected}`, () => {
-        const bankItem = new BankItem(value)
+// describe.each([
+//     {  id: "01", mvt: "x0" , expected: /0.00/ },
+//     {  id: "01", mvt: "" , expected: "0.00" },
+//     {  id: "01", mvt: "2000" , expected: "2000.00" },
+//     {  id: "01", mvt: "-1" , expected: "-1.00" }
+// ])('$#: new BankItem($id, $mvt).getMvt()', ({ id, mvt, expected }) => {
 
-        expect(bankItem.getMvt()).toMatch(expected)
-    })
-)
+//     test(`retourne "${expected}"`, () => {
+//         const bankItem = new BankItem({id, mvt})
+
+//         expect(bankItem.getMvt()).toMatch(expected)
+//     });
+
+// })
+
+test.concurrent.each([
+    { id: "01", mvt:"x0" , expected: /0.00/ },
+    { id: "01", mvt: "" , expected: "0.00" },
+    { id: "01", mvt: "2000" , expected: "2000.00" },
+    { id: "01", mvt: "-1" , expected: "-1.00" }
+])('$# - new BankItem({"$id", "$mvt"}).getMvt() === "$expected"', async ({ id, mvt, expected }) => {
+
+    const bankItem = new BankItem({id, mvt})
+
+    expect(bankItem.getMvt()).toMatch(expected)
+})
+
+
