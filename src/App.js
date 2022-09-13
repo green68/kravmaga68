@@ -25,7 +25,7 @@ import { User } from "./classes/User";
 import ToolsPage from "./pages/ToolsPage";
 import { Menu } from "./utilities/Menu";
 
-console.clear()
+// console.clear()
 
 // TEST: 
 // datas.setUserFromJSON(jsonDatas)
@@ -132,7 +132,7 @@ export default function App() {
           <Route path={pathTo(Menu.Balance)} element={<BalancePage />} />
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
           <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
-          <Route path={pathTo(Menu.Cash)} element={<CashPage />} />
+          <Route path={pathTo(Menu.Cash)} element={<CashPage cashDatas={null} />} />
           <Route path={pathTo(Menu.Tools)} element={<ToolsPage handleUpdate={userUpdate}/>} />
           <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
         </Routes>
