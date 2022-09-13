@@ -6,21 +6,26 @@
 * [jsonvisio.com](https://jsonvisio.com/editor) : pour édition graphique des fichiers json
 
 ## Suivi :
-    TODO:
-        - disabled validation if error in UserInit.jsx
-        - drop file in DropFile.jsx
 
-    2022-09-10
-        - upload datas
-    2022-09-08 :
-        - download datas
-        - reset datas
-        - validation component
-        - toolsPage
-        - initPage
-    2022-07-21 : 
-        - create first tests for App, BankItem, Year, Years
-        - create class for App, BankItem, Year, Years
+### TODO:
+- [ ] disabled validation if error in UserInit.jsx
+- [ ] drop file in DropFile.jsx
+
+
+### DONE:
+
+- [x] cash page first shoot <!-- 2022-09-13 -->
+- [x] cash form display & entries
+
+- [x] upload datas <!-- 2022-09-10 -->
+
+- [x] download datas <!-- 2022-09-08 : -->
+- [x] reset datas
+- [x] validation component
+- [x] toolsPage
+- [x] initPage
+- [x] create first tests for App, BankItem, Year, Years <!-- 2022-07-21 :  -->
+- [x] create class for App, BankItem, Year, Years
     
         
 
