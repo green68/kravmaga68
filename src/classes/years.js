@@ -1,4 +1,4 @@
-import { Year } from "./year"
+import { Year } from "./Year"
 
 /**
  * 

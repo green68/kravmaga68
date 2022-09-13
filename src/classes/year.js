@@ -1,5 +1,5 @@
-import { BankItem } from "./bankItem";
-import { CashItem } from "./cashItem";
+import { BankItem } from "./BankItem";
+import { CashItem } from "./CashItem";
 
 const initDatas = {
     "id": "2022",

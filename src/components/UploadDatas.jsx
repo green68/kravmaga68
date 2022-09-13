@@ -3,7 +3,7 @@ import { FaFileUpload } from "react-icons/fa"
 import Validation from "./Validation";
 import DropFile from "./DropFile";
 import { Container } from "react-bootstrap";
-import { User } from "../classes/user";
+import { User } from "../classes/User";
 
 function UploadDatas({ onClose, onUpload }) {
     const [isShow, setisShow] = useState(true)

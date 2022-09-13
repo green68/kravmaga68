@@ -1,6 +1,5 @@
-import { Years } from "./years";
+import { Years } from "./Years";
 import { isJSON } from "../utilities/Functions";
-
 
 class User {
     constructor(options = {}) {

@@ -1,4 +1,4 @@
-import { BankItem } from "../classes/bankItem"
+import { BankItem } from "../classes/BankItem"
 const datas = {
     "id": "01",
     "date": new Date(2022, 7, 26, 15, 0, 0),

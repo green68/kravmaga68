@@ -21,7 +21,7 @@ import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/Functions";
 import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
-import { User } from "./classes/user";
+import { User } from "./classes/User";
 import ToolsPage from "./pages/ToolsPage";
 import { Menu } from "./utilities/Menu";
 
