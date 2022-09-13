@@ -2,8 +2,8 @@ import { useState } from "react"
 import { Button, Container } from "react-bootstrap";
 import FormCashItem from "../components/Forms/FormCashItem";
 
-function CashPage({cashDatas}) {
-    
+function CashPage({ cashDatas }) {
+
   const [cashItems, setCashItems] = useState(cashDatas)
   const [isFormCashShow, setIsFormCashShow] = useState(false)
 
@@ -11,23 +11,29 @@ function CashPage({cashDatas}) {
     setIsFormCashShow(true)
     console.log("ajout");
   }
-  
+
   const handleCloseFormCashItem = (e) => {
-    console.log("handleClose dans ResetDatas");
+    console.log("handleCloseFormCashItem dans CashPage");
     setIsFormCashShow(false)
     // onClose()
-}
-  
+  }
+
+  const handleChange = (datas) => { 
+    
+    console.log(datas); 
+    debugger
+  }
+
   const CashItems = () => {
 
-    if(cashItems){
+    if (cashItems) {
       console.log(cashItems);
       debugger
     }
     return (
       <>
         <p>Pas de données disponible</p>
-        {isFormCashShow && <FormCashItem onClose={handleCloseFormCashItem} />}
+        {isFormCashShow && <FormCashItem onClose={handleCloseFormCashItem} onChange={handleChange} />}
       </>
     )
   }
@@ -35,15 +41,15 @@ function CashPage({cashDatas}) {
 
 
   return (
-      <>
-        <h2 className="text-center">Caisse</h2>
-        <Container>
-          <Button onClick={handleAjout} >Ajouter</Button>
-        </Container>
-        <CashItems />
-      </>
+    <>
+      <h2 className="text-center">Caisse</h2>
+      <Container>
+        <Button onClick={handleAjout} >Ajouter</Button>
+      </Container>
+      <CashItems />
+    </>
 
-    )
-  }
-  
-  export default CashPage
+  )
+}
+
+export default CashPage
