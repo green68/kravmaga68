@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
-import { FaFileDownload, FaFileUpload, FaTrash } from "react-icons/fa"
+import { FaFileDownload, FaFileExport, FaFileImport, FaFileUpload, FaTrash } from "react-icons/fa"
 import DownloadDatas from "../components/DownloadDatas"
 import ResetDatas from "../components/ResetDatas"
 import UploadDatas from "../components/UploadDatas"
@@ -44,7 +44,7 @@ const ToolsPage = ({ handleUpdate }) => {
               setIsShowUploadDatas(true)
             }}
           >
-            {<FaFileUpload />}
+            {<FaFileImport />}
             Charger des données
           </Button>
 
@@ -58,7 +58,7 @@ const ToolsPage = ({ handleUpdate }) => {
               setIsShowSaveDatas(true)
             }}
           >
-            {<FaFileDownload />}
+            {<FaFileExport />}
             Enregistrer les données
           </Button>
 

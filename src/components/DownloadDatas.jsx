@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container } from "react-bootstrap";
-import { FaFileDownload } from "react-icons/fa";
+import { FaFileDownload, FaFileExport } from "react-icons/fa";
 import { DatasClass } from "../datas/datas";
 import Validation from "./Validation";
 
@@ -25,7 +25,7 @@ const DownloadDatas = ({onClose}) => {
             <Validation 
                 show={isShow} 
                 onClose={handleClose} 
-                icon={<FaFileDownload/>}
+                icon={<FaFileExport/>}
                 title={"Enregistrer les données"}
                 color={"success"}
                 callback={saveToFile}

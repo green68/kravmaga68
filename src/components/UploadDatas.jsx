@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { FaFileUpload } from "react-icons/fa"
+import { FaFileImport, FaFileUpload } from "react-icons/fa"
 import Validation from "./Validation";
 import DropFile from "./DropFile";
 import { Container } from "react-bootstrap";
@@ -39,7 +39,7 @@ function UploadDatas({ onClose, onUpload }) {
         <Validation 
             show={isShow} 
             onClose={handleClose} 
-            icon={<FaFileUpload/>}
+            icon={<FaFileImport/>}
             title={"Charger des données"}
             color={"danger"}
             callback={loadFromFile}
