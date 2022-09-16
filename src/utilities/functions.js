@@ -29,7 +29,10 @@ const objectToArray = (obj) => {
 
 const InputPatterns = {
     float: /^[+-]?\d+(\.\d{0,2})?$/i,
-    pseudo:  /^([a-zA-Z0-9-_]{5,25})$/i
+    label:  /^([A-Za-z\d]{1})(([[A-Za-z\d]*|[-_' .]?]*)([A-Za-z\d.]{1}))*$/i,
+    pseudo:  /^([a-zA-Z0-9-_]{5,25})$/i,
+    alpha_num:  /^([a-zA-Z0-9]*)$/i,
+    // /^([A-Za-z\d]{1})(([[A-Za-z\d]*|[-_' .]?]*)([A-Za-z\d.]{1}))*$/i
 }
 /**
  * 
