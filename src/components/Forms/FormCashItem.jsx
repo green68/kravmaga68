@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Button, FloatingLabel, Form, Modal } from "react-bootstrap";
-import ReactDatePicker from "react-datepicker";
+import { Button, Col, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
+import ReactDatePicker, { CalendarContainer } from "react-datepicker";
 import { FaPiggyBank } from "react-icons/fa";
 import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
+import { isInputValid } from "../../utilities/Functions";
 
 const FormCashItem = ({ onClose, onChange }) => {
 
@@ -12,14 +13,15 @@ const FormCashItem = ({ onClose, onChange }) => {
         id: { valid: null, value: -1 },
         date: { valid: true, value: startDate },
         label: { valid: null, value: "" },
-        type: { valid: null, value: "" },
-        folio: { valid: null, value: "" },
+        type: { valid: true, value: "" },
+        folio: { valid: true, value: "" },
         mvt: { valid: null, value: "0.00" },
     }
 
     const [fields, setFields] = useState(fieldsDatas)
-    const [isShow, setisShow] = useState(true)
+    // const [isShow, setisShow] = useState(true)
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const updateDatas = () => {
         console.log("updateDatas dans FormCashItem");
@@ -33,7 +35,7 @@ const FormCashItem = ({ onClose, onChange }) => {
             mvt: fields.mvt.value,
         })
         // setisShow(false)
-        onClose()
+        // onClose()
         // navigate(pathTo(Menu.Home));
     }
 
@@ -57,30 +59,27 @@ const FormCashItem = ({ onClose, onChange }) => {
      */
     const handleChange = (e) => {
         const newFields = { ...fields }
-        console.log(e.target.value)
-        // debugger
-        switch (e.target.id) {
-            case "type":
-                newFields.type.value = e.target.value
-                break;
-            case "folio":
-                newFields.folio.value = e.target.value
-                break;
-            case "label":
-                newFields.label.value = e.target.value
-                break;
-            case "mvt":
-                newFields.mvt.value = e.target.value
-                break;
-            default:
-                break;
-        }
+        newFields[e.target.id].value = e.target.value
+        const valid = isInputValid(e.target)
+        newFields[e.target.id].valid = valid
+        console.log(e.target.id, e.target.value, valid)
         setFields({
             ...fields,
             newFields
         })
+        if (
+            fields.label.valid
+            && fields.date.valid
+            && fields.folio.valid
+            && fields.type.valid
+            && fields.mvt.valid
+        ) {
+            setIsFormValid(true)
+        } else {
+            setIsFormValid(false)
+        }
         // debugger
-     }
+    }
 
     const handleDateChange = (e) => {
         setIsDatePickerOpen(!isDatePickerOpen)
@@ -97,42 +96,86 @@ const FormCashItem = ({ onClose, onChange }) => {
         <>
             {/* {console.log(`startDate: ${startDate}`)} */}
             <Validation
-                show={isShow}
+                show={true}
                 onClose={handleClose}
                 icon={<FaPiggyBank />}
                 title={"Mouvement de caisse"}
-                style={{'--modal-outline-color' : `var(--bs-light`}}
+                style={{ '--modal-outline-color': `var(--bs-light` }}
                 color={"light"}
                 callback={updateDatas}
+                isButtonDisabled={!isFormValid}
             >
-                <Form>
+                <Form >
                     <Form.Group className="mb-3" >
-                        <Button
-                            className="btn-date"
-                            onClick={handleButtonDateClick}
-                        >
-                            {console.log(startDate.toLocaleDateString())}
-                            {startDate.toLocaleDateString()}
-                        </Button>
-                        {isDatePickerOpen && (
-                            <ReactDatePicker
-                                locale={fr}
-                                dateFormat={"dd/MM/yyyy"}
-                                selected={startDate}
-                                onChange={handleDateChange}
-                                inline
-                            />
+                        <Form.Label >Libellé :</Form.Label>
+                        <Form.Control
+                            id="label"
+                            className={`input-control
+                                    ${fields.label.valid === null ? "" : fields.label.valid ? "is-valid" : "is-invalid"}
+                                    `}
+                            placeholder="Libellé du mouvement"
+                            value={fields.label.value}
+                            onChange={handleChange}
+                            pattern={"label"}
+                            maxLength={80}
+                            required
 
-                        )}
+                        />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" >
-                        <FloatingLabel 
-                            controlId="type"
-                            label="Type du mouvement"
-                            className="text-dark"
-                        >
+                    <Row className="mb3">
+
+                        <Form.Group as={Col} className="mb-3" >
+                            <Form.Label >Date :</Form.Label>
+                            <Button
+                                size="lg"
+                                className="btn-date"
+                                variant="success"
+                                onClick={handleButtonDateClick}
+                            >
+                                {console.log(startDate.toLocaleDateString())}
+                                {startDate.toLocaleDateString()}
+                            </Button>
+                            {isDatePickerOpen && (
+                                <CalendarContainer className="date-picker" >
+                                    <ReactDatePicker
+                                        locale={fr}
+                                        dateFormat={"dd/MM/yyyy"}
+                                        selected={startDate}
+                                        onChange={handleDateChange}
+                                        inline
+                                    />
+                                </CalendarContainer>
+
+                            )}
+                        </Form.Group>
+
+
+
+
+                        <Form.Group as={Col} className="mb-3" >
+                            <Form.Label >Folio :</Form.Label>
                             <Form.Control
+                                id="folio"
+                                className={`input-control
+                                ${fields.folio.valid === null ? "" : fields.folio.valid ? "is-valid" : "is-invalid"}
+                                `}
+                                placeholder="Folio du mouvement"
+                                value={fields.folio.value}
+                                onChange={handleChange}
+                                pattern={"alpha_num"}
+                                maxLength={5}
+                            />
+                        </Form.Group>
+                    </Row>
+
+
+
+                    <Row>
+                        <Form.Group as={Col} className="mb-3" >
+                            <Form.Label >Type :</Form.Label>
+                            <Form.Control
+                                id="type"
                                 label="Type du mouvement"
                                 className={`input-control
                                     ${fields.type.valid === null ? "" : fields.type.valid ? "is-valid" : "is-invalid"}
@@ -140,71 +183,28 @@ const FormCashItem = ({ onClose, onChange }) => {
                                 placeholder="Type du mouvement"
                                 value={fields.type.value}
                                 onChange={handleChange}
-                                pattern={"pseudo"}
-                                required
+                                pattern={"alpha_num"}
+                                maxLength={5}
+                                autoFocus={true}
                             />
 
-                        </FloatingLabel>
-                    </Form.Group>
-                    
-                    <Form.Group className="mb-3" >
-                        <FloatingLabel 
-                            controlId="folio"
-                            label="Folio du mouvement"
-                            className="text-dark"
-                        >
-                        <Form.Control
-                            className={`input-control
-                                ${fields.folio.valid === null ? "" : fields.folio.valid ? "is-valid" : "is-invalid"}
-                                `}
-                            placeholder="Folio du mouvement"
-                            value={fields.folio.value}
-                            onChange={handleChange}
-                            pattern={"pseudo"}
-                            required
-                        />
-                        </FloatingLabel>
-                    </Form.Group>
+                        </Form.Group>
 
-                    <Form.Group className="mb-3" >
-                        <FloatingLabel 
-                            controlId="label"
-                            label="Libellé du mouvement"
-                            className="text-dark"
-                        >
+                        <Form.Group as={Col} className="mb-3" >
+                            <Form.Label>Montant :</Form.Label>
                             <Form.Control
+                                id="mvt"
                                 className={`input-control
-                                    ${fields.label.valid === null ? "" : fields.label.valid ? "is-valid" : "is-invalid"}
-                                    `}
-                                placeholder="Libellé du mouvement"
-                                value={fields.label.value}
-                                onChange={handleChange}
-                                pattern={"pseudo"}
-                                required
-                                autoFocus
-                            />
-                        </FloatingLabel>
-                    </Form.Group>
-
-
-                    <Form.Group className="mb-3" >
-                    <FloatingLabel 
-                            controlId="mvt"
-                            label="Montant du mouvement"
-                            className="text-black"
-                        >
-                        <Form.Control
-                            className={`input-control
                                 ${fields.mvt.valid === null ? "" : fields.mvt.valid ? "is-valid" : "is-invalid"}
                                 `}
-                            placeholder="Montant du mouvement"
-                            value={fields.mvt.value}
-                            onChange={handleChange}
-                            pattern={"pseudo"}
-                            required
-                        />
-                        </FloatingLabel>
-                    </Form.Group>
+                                placeholder="Montant du mouvement"
+                                value={fields.mvt.value}
+                                onChange={handleChange}
+                                pattern={"float"}
+                                required
+                            />
+                        </Form.Group>
+                    </Row>
 
                 </Form>
             </Validation>
