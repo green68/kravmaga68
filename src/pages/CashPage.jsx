@@ -20,7 +20,8 @@ function CashPage({ cashDatas }) {
 
   const handleChange = (datas) => { 
     
-    console.log(datas); 
+    console.log(datas);
+    setIsFormCashShow(false) 
     debugger
   }
 
