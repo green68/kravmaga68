@@ -7,15 +7,24 @@
 
 ## Suivi :
 
-### TODO:
-- [ ] disabled validation if error in UserInit.jsx
+### TODO :
+- [ ] disabled validation on tabulation if error in UserInit.jsx
 - [ ] drop file in DropFile.jsx
 
+- [ ] save new cashItem
+- [ ] cashPage list cashItems
 
-### DONE:
+- [ ] bank form 
+- [ ] bankPage list bankItems
+- [ ] save new bankItem
 
-- [x] cash page first shoot <!-- 2022-09-13 -->
-- [x] cash form display & entries
+
+### DONE :
+<!-- 2022-09-14 -->
+- [x] Change icons for import & export datas
+
+- [x] cash form display & entries <!-- 2022-09-13 -->
+- [x] cash page first shoot 
 
 - [x] upload datas <!-- 2022-09-10 -->
 
