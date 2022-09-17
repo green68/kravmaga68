@@ -47,7 +47,7 @@ const isInputValid = (eventTarget) => {
         return true
     }
 
-    const pattern = InputPatterns[eventTarget.pattern]
+    let pattern = InputPatterns[eventTarget.pattern]
     if (pattern) {
         if (!pattern.test(eventTarget.value)) return false
 
@@ -55,8 +55,10 @@ const isInputValid = (eventTarget) => {
     }
 
     try {
+        debugger
         pattern = new RegExp(eventTarget.pattern, "i")
         if (!pattern.test(eventTarget.value)) return false
+        
         return true
         
     } catch (error) {
