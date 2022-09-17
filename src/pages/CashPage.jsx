@@ -66,13 +66,15 @@ function CashPage({ cashDatas, test }) {
 
 
   return (
-    <>
+    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto auto 1fr"}}>
       <h2 className="text-center">Caisse</h2>
       <Container>
         <Button onClick={handleAjout} >Ajouter</Button>
       </Container>
-      <Container className="mt-3">
-        <CashItemsList />
+      <Container className="my-3 overflow-hidden">
+        <Container className="overflow-auto h-100">
+          <CashItemsList />
+        </Container>
       </Container>
       {isFormCashShow
         && <FormCashItem
@@ -80,7 +82,7 @@ function CashPage({ cashDatas, test }) {
           onChange={handleChange}
           datas={structuredClone(cashItemDatas) }
         />}
-    </>
+    </Container>
 
   )
 }
