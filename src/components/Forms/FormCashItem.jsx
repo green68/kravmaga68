@@ -6,26 +6,18 @@ import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
 
-const FormCashItem = ({ onClose, onChange }) => {
+const FormCashItem = ({ onClose, onChange, datas }) => {
 
-    const [startDate, setStartDate] = useState(new Date())
-    const fieldsDatas = {
-        id: { valid: null, value: -1 },
-        date: { valid: true, value: startDate },
-        label: { valid: null, value: "" },
-        type: { valid: true, value: "" },
-        folio: { valid: true, value: "" },
-        mvt: { valid: null, value: "0.00" },
-    }
-
+    console.log(datas);
+    const fieldsDatas = {...datas}
+    
     const [fields, setFields] = useState(fieldsDatas)
-    // const [isShow, setisShow] = useState(true)
+    const [startDate, setStartDate] = useState(fields.date.value)
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const [isFormValid, setIsFormValid] = useState(false);
 
     const updateDatas = () => {
         console.log("updateDatas dans FormCashItem");
-        debugger
         onChange({
             id: fields.id.value,
             date: fields.date.value,
@@ -34,21 +26,14 @@ const FormCashItem = ({ onClose, onChange }) => {
             folio: fields.folio.value,
             mvt: fields.mvt.value,
         })
-        // setisShow(false)
-        // onClose()
-        // navigate(pathTo(Menu.Home));
     }
 
     const handleClose = (e) => {
         console.log("handleClose dans FormCashItem");
-        // setisShow(false)
         onClose()
     }
 
-
     const handleButtonDateClick = (e) => {
-        // console.log(e)
-        // debugger
         e.preventDefault()
         setIsDatePickerOpen(!isDatePickerOpen)
     }
@@ -78,7 +63,6 @@ const FormCashItem = ({ onClose, onChange }) => {
         } else {
             setIsFormValid(false)
         }
-        // debugger
     }
 
     const handleDateChange = (e) => {
@@ -94,7 +78,6 @@ const FormCashItem = ({ onClose, onChange }) => {
 
     return (
         <>
-            {/* {console.log(`startDate: ${startDate}`)} */}
             <Validation
                 show={true}
                 onClose={handleClose}
