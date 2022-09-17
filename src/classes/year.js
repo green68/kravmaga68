@@ -11,6 +11,7 @@ const initDatas = {
 
 class Year {
     constructor(datas = {}) {
+        // TODO: revoir si structuredClone() à la place de Object.assign()
         Object.assign(initDatas, datas)
         Object.assign(this, initDatas)
         this.bank_items = this.bank_items.map(element => {
@@ -21,7 +22,6 @@ class Year {
             element = new CashItem(element)
             return element
         });
-        // console.log(this.bank_items, this.cash_items);
     }
     getId() {
         return this.id
@@ -36,22 +36,13 @@ class Year {
         return isNaN(parseFloat(this.cash_report)) ? "0.00" : parseFloat(this.cash_report).toFixed(2)
     }
     getCash() {
-        // const report = +this.getCashReport()
-        // console.log(report);
         const cumul = this.cash_items.reduce((cumul, item) => cumul + (+item.getMvt()), +this.getCashReport())
         return cumul.toFixed(2)
     }
     getBank() {
-        // const report = +this.getCashReport()
-        // console.log(report);
         const cumul = this.bank_items.reduce((cumul, item) => cumul + (+item.getMvt()), +this.getBankReport())
         return cumul.toFixed(2)
     }
-
-    // toString() {
-        
-    //     return this.id
-    // }
 }
 
 export { Year }
