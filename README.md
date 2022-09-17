@@ -9,10 +9,10 @@
 
 ### TODO :
 - [ ] disabled validation on tabulation if error in UserInit.jsx
-- [ ] drop file in DropFile.jsx
+- [ ] drop file in DropFile.jsx (see [react-dropzone.js]( https://react-dropzone.js.org/#section-previews))
 
 - [ ] save new cashItem
-- [ ] cashPage list cashItems
+- [ ] cashPage list cashItems with overflow
 
 - [ ] bank form 
 - [ ] bankPage list bankItems
@@ -20,8 +20,10 @@
 
 
 ### DONE :
-<!-- 2022-09-14 -->
-- [x] Change icons for import & export datas
+<!-- 2022-09-17 -->
+- [x] add listing for cashItems (first shoot)
+
+- [x] Change icons for import & export datas<!-- 2022-09-14 -->
 
 - [x] cash form display & entries <!-- 2022-09-13 -->
 - [x] cash page first shoot 
