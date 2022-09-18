@@ -21,7 +21,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         onChange({
             id: fields.id.value,
             date: fields.date.value,
-            label: fields.label.value,
+            label: fields.label.value.trim(),
             type: fields.type.value,
             folio: fields.folio.value,
             mvt: fields.mvt.value,
@@ -99,8 +99,8 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
                             placeholder="Libellé du mouvement"
                             value={fields.label.value}
                             onChange={handleChange}
-                            pattern={"label"}
-                            maxLength={80}
+                            minLength={5}
+                            maxLength={255}
                             required
 
                         />

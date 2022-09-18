@@ -29,10 +29,9 @@ const objectToArray = (obj) => {
 
 const InputPatterns = {
     float: /^[+-]?\d+(\.\d{0,2})?$/i,
-    label:  /^([A-Za-z\d]{1})(([[A-Za-z\d]*|[-_' .]?]*)([A-Za-z\d.]{1}))*$/i,
+    // label:  /^([A-Za-z\d]{1})(([[A-Za-z\d]*|[-_' .]?]*)([A-Za-z\d.]{1}))*$/i,
     pseudo:  /^([a-zA-Z0-9-_]{5,25})$/i,
     alpha_num:  /^([a-zA-Z0-9]*)$/i,
-    // /^([A-Za-z\d]{1})(([[A-Za-z\d]*|[-_' .]?]*)([A-Za-z\d.]{1}))*$/i
 }
 /**
  * 
@@ -40,7 +39,10 @@ const InputPatterns = {
  * @returns {boolean}
  */
 const isInputValid = (eventTarget) => {
+    if (eventTarget.minLength && eventTarget.value.trim().length < eventTarget.minLength) return false
+    
     if(!eventTarget?.pattern) {
+
         console.log("Pas de pattern pour :",eventTarget);
         if(eventTarget.required && eventTarget.value.trim() === "") return false
         
@@ -54,16 +56,16 @@ const isInputValid = (eventTarget) => {
         return true
     }
 
-    try {
-        debugger
-        pattern = new RegExp(eventTarget.pattern, "i")
-        if (!pattern.test(eventTarget.value)) return false
+    // try {
+    //     debugger
+    //     pattern = new RegExp(eventTarget.pattern, "i")
+    //     if (!pattern.test(eventTarget.value)) return false
         
-        return true
+    //     return true
         
-    } catch (error) {
-        throw new Error("Pattern invalide pour :", eventTarget)
-    }
+    // } catch (error) {
+    //     throw new Error("Pattern invalide pour :", eventTarget)
+    // }
 }
 export {
     downloadFile,
