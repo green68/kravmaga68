@@ -35,6 +35,9 @@ class Year {
     getCashReport() {
         return isNaN(parseFloat(this.cash_report)) ? "0.00" : parseFloat(this.cash_report).toFixed(2)
     }
+    getCashItems() {
+        return this.cash_items
+    }
     getCash() {
         const cumul = this.cash_items.reduce((cumul, item) => cumul + (+item.getMvt()), +this.getCashReport())
         return cumul.toFixed(2)
