@@ -31,7 +31,15 @@ class CashItem {
      */
     constructor(datas = {...initDatas}) {
         Object.assign(initDatas, datas)
-        Object.assign(this, initDatas)
+        this.id = +initDatas.id
+        this.date = new Date(initDatas.date)
+        this.label = initDatas.label
+        this.type = initDatas.type
+        this.folio = initDatas.folio
+        this.mvt = initDatas.mvt
+        
+        // Object.assign(this, initDatas)
+        debugger
     }
     /**
      * 
@@ -39,6 +47,9 @@ class CashItem {
      */
     getMvt() {
         return isNaN(parseFloat(this.mvt)) ? "0.00" : parseFloat(this.mvt).toFixed(2)
+    }
+    getDate() {
+        return this.date
     }
 
 }
