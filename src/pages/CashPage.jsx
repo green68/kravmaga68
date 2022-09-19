@@ -19,7 +19,7 @@ const cashItemDatasInit = {
  */
 function CashPage({ cashDatas, test }) {
 
-  const [cashItemsArray, setCashItemsArray] = useState(structuredClone(cashDatas) )
+  const [cashItemsArray, setCashItemsArray] = useState([...cashDatas] )
   const [isFormCashShow, setIsFormCashShow] = useState(false)
   const [cashItemDatas, setCashItemDatas] = useState(structuredClone(cashItemDatasInit))
 
