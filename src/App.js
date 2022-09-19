@@ -132,7 +132,7 @@ export default function App() {
           <Route path={pathTo(Menu.Balance)} element={<BalancePage />} />
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
           <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
-          <Route path={pathTo(Menu.Cash)} element={<CashPage cashDatas={year.getBankItems()} />} />
+          <Route path={pathTo(Menu.Cash)} element={<CashPage cashDatas={year.getCashItems()} />} />
           <Route path={pathTo(Menu.Tools)} element={<ToolsPage handleUpdate={userUpdate}/>} />
           <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
         </Routes>
