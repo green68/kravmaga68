@@ -26,6 +26,10 @@ class Year {
     getId() {
         return this.id
     }
+    /**
+     * 
+     * @returns {Array<BankItem>} The array of BankItems
+     */
     getBankItems() {
         return this.bank_items
     }
@@ -35,16 +39,44 @@ class Year {
     getCashReport() {
         return isNaN(parseFloat(this.cash_report)) ? "0.00" : parseFloat(this.cash_report).toFixed(2)
     }
+    /**
+     * 
+     * @returns {Array<CashItem>} the Array of CashItems
+     */
     getCashItems() {
         return this.cash_items
     }
-    getCash() {
+    /**
+     * 
+     * @returns {string} The accumulation of cash mvt with 2 digit decimal
+     * @example "-10.00", "1.12"
+     */
+    getCashTotal() {
         const cumul = this.cash_items.reduce((cumul, item) => cumul + (+item.getMvt()), +this.getCashReport())
         return cumul.toFixed(2)
     }
-    getBank() {
+     /**
+     * 
+     * @returns {string} The accumulation of bank mvt with 2 digit decimal
+     * @example "-10.00", "1.12"
+     */
+    getBankTotal() {
         const cumul = this.bank_items.reduce((cumul, item) => cumul + (+item.getMvt()), +this.getBankReport())
         return cumul.toFixed(2)
+    }
+    /**
+     * 
+     * @param {Array<BankItem>} newItems 
+     */
+    setBankItems(newItems) {
+        this.bank_items = newItems
+    }
+    /**
+     * 
+     * @param {Array<CashItem>} newItems 
+     */
+    setCashItems(newItems) {
+        this.cash_items = newItems
     }
 }
 
