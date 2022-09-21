@@ -15,10 +15,8 @@ const initDatas = {
     "date": null,
     "label": "",
     "type": "",
-    // "cheque": "",
     "folio": "",
     "mvt": "0.00",
-    // "checked": false
 }
 
 /**
@@ -37,13 +35,11 @@ class CashItem {
         this.type = initDatas.type
         this.folio = initDatas.folio
         this.mvt = initDatas.mvt
-        
-        // Object.assign(this, initDatas)
-        debugger
     }
     /**
      * 
-     * @returns {string}
+     * @returns {string} String representation of mvt
+     * @example "123.00", "-0.01"
      */
     getMvt() {
         return isNaN(parseFloat(this.mvt)) ? "0.00" : parseFloat(this.mvt).toFixed(2)
