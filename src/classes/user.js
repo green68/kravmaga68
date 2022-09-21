@@ -1,5 +1,6 @@
 import { Years } from "./Years";
 import { isJSON } from "../utilities/Functions";
+import { Year } from "./Year";
 
 class User {
     constructor(options = {}) {
@@ -15,10 +16,7 @@ class User {
         if (!isJSON(datas)) return
 
         datas = JSON.parse(datas)
-        // console.log("datas :",datas);
-        // debugger
         for (const [key, value] of Object.entries(datas)) {
-            // console.log(key);
             switch (key) {
                 case "name":
                     if (value) {
@@ -29,7 +27,6 @@ class User {
                     }
                     break;
                 case "years":
-                    // console.log(value);
                     if (value && Array.isArray(value)) {
                         this.years = new Years(value)
                     } else if(value && value instanceof Object) {
@@ -42,16 +39,13 @@ class User {
                 default:
                     this[key] = value
                     console.log(`new key ${key}: ${value}`);
-                    // throw new Error("create user: key not valid")
                     break;
             }
         }
     }
-
-    getLastYear() {
-        // getLast() {
-        console.log(this.years.length);
-        return this.years[this.years.length - 1]
+    
+    getYears() {
+        return this.years
     }
 
     toJSON() {
@@ -61,9 +55,6 @@ class User {
         };
     }
 
-    // toString() {
-    //     return "{pour test}"
-    // }
 }
 
 export { User }
