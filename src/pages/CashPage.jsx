@@ -17,7 +17,7 @@ const cashItemDatasInit = {
  * @param {Array<CashItem>} cashDatas
  * @param {boolean} test
  */
-function CashPage({ cashDatas, test }) {
+function CashPage({ cashDatas, onChange }) {
 
   const [cashItemsArray, setCashItemsArray] = useState([...cashDatas] )
   const [isFormCashShow, setIsFormCashShow] = useState(false)
@@ -40,13 +40,13 @@ function CashPage({ cashDatas, test }) {
     console.log(datas);
     if (datas.id === -1) {
       datas.id = temp.length + 1
+      const cashItem = new CashItem(datas)
+      temp.push(cashItem)
+      setCashItemsArray(temp)
+      onChange(cashItemsArray)
     }
-    const cashItem = new CashItem(datas)
-    temp.push(cashItem)
-    setCashItemsArray(temp)
-    console.log(cashItemsArray);
-    setCashItemDatas(structuredClone(cashItemDatasInit))
     setIsFormCashShow(false)
+    // console.log(cashItemsArray)
   }
 
   const CashItemsList = () => {
@@ -80,7 +80,7 @@ function CashPage({ cashDatas, test }) {
         && <FormCashItem
           onClose={handleCloseFormCashItem}
           onChange={handleChange}
-          datas={structuredClone(cashItemDatas) }
+          datas={ cashItemDatas }
         />}
     </Container>
 

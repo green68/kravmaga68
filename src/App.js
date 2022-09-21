@@ -49,7 +49,7 @@ export default function App() {
   // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
   // eslint-disable-next-line
-  const [year, setYear] = useState(user.name ? user.years?.getLast() : null );
+  const [year, setYear] = useState(user.name ? user.years?.getLast() : null);
 
   const changePage = (e) => {
     e.preventDefault();
@@ -63,9 +63,17 @@ export default function App() {
     }
   };
 
+  function handleChangeCash(datas) {
+    // console.log(datas)
+    const newUser = new User( (JSON.stringify(user)))
+    // console.log(year.id, newUser.getYears().getYear(year.id).getCashItems())
+    newUser.getYears().getYear(year.id).setCashItems(datas)
+    userUpdate(JSON.stringify(newUser))
+  }
 
   const userUpdate = (userDatas) => {
     setUser(new User(userDatas))
+    // debugger
   }
 
   // for resize page 
@@ -132,8 +140,10 @@ export default function App() {
           <Route path={pathTo(Menu.Balance)} element={<BalancePage />} />
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
           <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
-          <Route path={pathTo(Menu.Cash)} element={<CashPage cashDatas={year.getCashItems()} />} />
-          <Route path={pathTo(Menu.Tools)} element={<ToolsPage handleUpdate={userUpdate}/>} />
+          <Route path={pathTo(Menu.Cash)} element={
+            <CashPage cashDatas={year.getCashItems()} onChange={(datas) => handleChangeCash(datas)} />
+          } />
+          <Route path={pathTo(Menu.Tools)} element={<ToolsPage handleUpdate={userUpdate} />} />
           <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
         </Routes>
       </main>
@@ -155,7 +165,7 @@ export default function App() {
           onClick={(e) => changePage(e)}
         >
           <BsBank />
-          {year ? year.getBank() : "NC"}
+          {year ? year.getBankTotal() : "NC"}
         </NavLink>
 
         <NavLink
@@ -165,11 +175,11 @@ export default function App() {
           onClick={(e) => changePage(e)}
         >
           <FaPiggyBank />
-          {year ? year.getCash() : "NC"}
+          {year ? year.getCashTotal() : "NC"}
         </NavLink>
       </Footer>
 
-      { <UserInit show={!user.name} handleInit={userUpdate}/> }
+      {<UserInit show={!user.name} handleInit={userUpdate} />}
 
     </div>
 
