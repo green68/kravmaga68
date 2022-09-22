@@ -1,0 +1,27 @@
+.item-card {
+    background-color: var(--bs-dark) ;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    border: 1px solid var(--border-color);
+    border-radius: .25rem;
+    font-size: 16px;
+    cursor: pointer;
+}
+.item-card:hover {
+    box-shadow: 0 0 0 0.4rem rgba(228, 228, 235, 0.25);
+}
+
+.item-card__title {
+    display: grid;
+    grid-template-columns: max-content auto auto max-content;
+    gap: .5rem;
+}
+
+.item-card__body {
+    padding: 0;
+}
+
+.item-card__footer {
+    border: 0;
+
+}

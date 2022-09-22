@@ -78,7 +78,7 @@ function CashPage({ cashDatas, onChange }) {
         <Button onClick={handleAddCashItem} >Ajouter</Button>
       </Container>
       <Container className="my-3 overflow-hidden">
-        <Container className="overflow-auto h-100">
+        <Container className="overflow-auto h-100 py-2">
           <CashItemsList />
         </Container>
       </Container>

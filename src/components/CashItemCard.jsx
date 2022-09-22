@@ -1,33 +1,28 @@
-import { Card } from "react-bootstrap";
-import { CashItem } from "../classes/CashItem";
+import { Card } from "react-bootstrap"
+import { CashItem } from "../classes/CashItem"
+import "./CashItemCard.css"
 
 /**
- * 
- * @param {CashItem} datas
- * @returns 
+ * @param {{datas: CashItem}} props
  */
-const CashItemCard = ({datas}) => {
+const CashItemCard = ({ datas }) => {
 
-    const color = Math.sign( parseFloat( datas.mvt)) === -1 ? "danger" : "success"
+    const color = Math.sign(parseFloat(datas.mvt)) === -1 ? "danger" : "success"
 
     return (
-        <Card className={`bg-dark text-lght border border-${color} mb-3 p-3`} >
-            <Card.Title className="d-flex justify-content-between">
-                <span>{datas.date?.toLocaleDateString()}</span>    
-                <span>{datas.getMvt()}</span>    
-
-            </Card.Title>
-            <Card.Body>
-                <p className="text-truncate">
-                {datas.label}
-
-                </p>
-            </Card.Body>
-            <Card.Footer className="d-flex justify-content-between">
-                <span>{datas.type}</span>
-                <span>{datas.folio}</span>
-            </Card.Footer>
-        </Card>
+        <section className="item-card" style={{ '--border-color': `var(--bs-${color})` }}>
+            <div className="item-card__title">
+                <span>{datas.date?.toLocaleDateString()}</span>
+                <span className="text-uppercase">{datas.type}</span>
+                <span className="text-uppercase">{datas.folio}</span>
+                <span>{datas.getMvt()} €</span>
+            </div>
+            <div className="item-card__body">
+                <span className="text-truncate">
+                    {datas.label}
+                </span>
+            </div>
+        </section>
     )
 }
 
