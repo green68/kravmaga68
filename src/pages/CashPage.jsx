@@ -5,17 +5,22 @@ import CashItemCard from "../components/CashItemCard";
 import FormCashItem from "../components/Forms/FormCashItem";
 
 const cashItemDatasInit = {
+  /**@type {{valid: boolean, value: number}} */
   id: { valid: null, value: -1 },
+  /**@type {{valid: boolean, value: Date}} */
   date: { valid: true, value: new Date() },
+  /**@type {{valid: boolean, value: string}} */
   label: { valid: null, value: "" },
+  /**@type {{valid: boolean, value: string}} */
   type: { valid: true, value: "" },
+  /**@type {{valid: boolean, value: string}} */
   folio: { valid: true, value: "" },
+  /**@type {{valid: boolean, value: string}} */
   mvt: { valid: null, value: "" },
 }
 
 /**
- * @param {Array<CashItem>} cashDatas
- * @param {boolean} test
+ * @param {{cashDatas: Array<CashItem>, onChange: Function}} props
  */
 function CashPage({ cashDatas, onChange }) {
 
@@ -23,18 +28,21 @@ function CashPage({ cashDatas, onChange }) {
   const [isFormCashShow, setIsFormCashShow] = useState(false)
   const [cashItemDatas, setCashItemDatas] = useState(structuredClone(cashItemDatasInit))
 
-  const handleAjout = (e) => {
+  /** @param {MouseEvent|TouchEvent} e */
+  const handleAddCashItem = (e) => {
     setCashItemDatas(structuredClone(cashItemDatasInit) )
     setIsFormCashShow(true)
     console.log("ajout");
   }
-
+  
+  /** @param {MouseEvent|TouchEvent} e */
   const handleCloseFormCashItem = (e) => {
     console.log("handleCloseFormCashItem dans CashPage");
     setCashItemDatas(structuredClone(cashItemDatasInit))
     setIsFormCashShow(false)
   }
 
+  /** @param {cashItem} datas */
   const handleChange = (datas) => {
     const temp = cashItemsArray
     console.log(datas);
@@ -63,13 +71,11 @@ function CashPage({ cashDatas, onChange }) {
     )
   }
 
-
-
   return (
     <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto auto 1fr"}}>
       <h2 className="text-center">Caisse</h2>
       <Container>
-        <Button onClick={handleAjout} >Ajouter</Button>
+        <Button onClick={handleAddCashItem} >Ajouter</Button>
       </Container>
       <Container className="my-3 overflow-hidden">
         <Container className="overflow-auto h-100">
