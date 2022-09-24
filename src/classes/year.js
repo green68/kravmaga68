@@ -3,6 +3,7 @@ import { CashItem } from "./CashItem";
 
 const initDatas = {
     "id": "2022",
+    "month": "9",
     "bank_report": "0.00",
     "cash_report": "0.00",
     "bank_items": [],
