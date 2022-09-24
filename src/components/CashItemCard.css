@@ -19,6 +19,7 @@
 
 .item-card__body {
     padding: 0;
+    display: flex;
 }
 
 .item-card__footer {
