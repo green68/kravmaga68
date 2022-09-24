@@ -11,17 +11,23 @@
 - [ ] disabled validation on tabulation if error in UserInit.jsx
 - [ ] drop file in DropFile.jsx (see [react-dropzone.js]( https://react-dropzone.js.org/#section-previews))
 
-- [ ] save new cashItem
-- [ ] cashPage list cashItems with overflow
+
+- [ ] cashItem card design in cardPage
 
 - [ ] bank form 
 - [ ] bankPage list bankItems
 - [ ] save new bankItem
+- [ ] bankItem card design in bankPage
 
 
 ### DONE :
-<!-- 2022-09-17 -->
-- [x] add listing for cashItems (first shoot)
+<!-- 2022-09-24 -->
+- [x] change icon for png and favicon
+
+- [x] save new cashItem <!-- 2022-09-21 -->
+- [x] cashPage list cashItems with overflow
+
+- [x] add listing for cashItems (first shoot) <!-- 2022-09-17 -->
 
 - [x] Change icons for import & export datas<!-- 2022-09-14 -->
 
@@ -47,7 +53,7 @@
 
         npm run test
 
-* documentation :
+## Documentation :
 
     * [documentation jest](https://jestjs.io/fr/)
     * [vscode-jest](https://github.com/jest-community/vscode-jest#getting-started)
@@ -55,7 +61,7 @@
     * [simple drag and drop file upload](https://codepen.io/dcode-software/pen/xxwpLQo?editors=0010)
     * [drag and drop file upload](https://codepen.io/joezimjs/pen/yPWQbd?editors=0010)
 
-## Autres
+## Autres infos
 
 [Getting Started with Create React App](/react-app-readme.md)
 
