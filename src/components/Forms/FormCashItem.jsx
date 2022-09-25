@@ -9,8 +9,8 @@ import { isInputValid } from "../../utilities/Functions";
 const FormCashItem = ({ onClose, onChange, datas }) => {
 
     console.log(datas);
-    const fieldsDatas = {...datas}
-    
+    const fieldsDatas = { ...datas }
+
     const [fields, setFields] = useState(fieldsDatas)
     const [startDate, setStartDate] = useState(fields.date.value)
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
@@ -77,121 +77,118 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
     }
 
     return (
-        <>
-            <Validation
-                show={true}
-                onClose={handleClose}
-                icon={<FaPiggyBank />}
-                title={"Mouvement de caisse"}
-                style={{ '--modal-outline-color': `var(--bs-light` }}
-                color={"light"}
-                callback={updateDatas}
-                isButtonDisabled={!isFormValid}
-            >
-                <Form >
-                    <Form.Group className="mb-3" >
-                        <Form.Label >Libellé :</Form.Label>
-                        <Form.Control
-                            id="label"
-                            className={`input-control
-                                    ${fields.label.valid === null ? "" : fields.label.valid ? "is-valid" : "is-invalid"}
-                                    `}
-                            placeholder="Libellé du mouvement"
-                            value={fields.label.value}
-                            onChange={handleChange}
-                            minLength={5}
-                            maxLength={255}
-                            required
+        <Validation
+            show={true}
+            onClose={handleClose}
+            icon={<FaPiggyBank />}
+            title={"Mouvement de caisse"}
+            style={{ '--modal-outline-color': `var(--bs-light` }}
+            color={"light"}
+            callback={updateDatas}
+            isButtonDisabled={!isFormValid}
+        >
+            <Form >
+                <Form.Group className="mb-3" >
+                    <Form.Label >Libellé :</Form.Label>
+                    <Form.Control
+                        id="label"
+                        className={
+                            `input-control 
+                            ${fields.label.valid === null ? "" : fields.label.valid ? "is-valid" : "is-invalid"}
+                                    `
+                        }
+                        placeholder="Libellé du mouvement"
+                        value={fields.label.value}
+                        onChange={handleChange}
+                        minLength={5}
+                        maxLength={255}
+                        required
+                        autoFocus
+                    />
+                </Form.Group>
 
-                        />
+                <Row className="mb3">
+
+                    <Form.Group as={Col} className="mb-3" >
+                        <Form.Label >Date :</Form.Label>
+                        <Button
+                            size="lg"
+                            className="btn-date"
+                            variant="success"
+                            onClick={handleButtonDateClick}
+                        >
+                            {console.log(startDate.toLocaleDateString())}
+                            {startDate.toLocaleDateString()}
+                        </Button>
+                        {isDatePickerOpen && (
+                            <CalendarContainer className="date-picker" >
+                                <ReactDatePicker
+                                    locale={fr}
+                                    dateFormat={"dd/MM/yyyy"}
+                                    selected={startDate}
+                                    onChange={handleDateChange}
+                                    inline
+                                />
+                            </CalendarContainer>
+
+                        )}
                     </Form.Group>
 
-                    <Row className="mb3">
-
-                        <Form.Group as={Col} className="mb-3" >
-                            <Form.Label >Date :</Form.Label>
-                            <Button
-                                size="lg"
-                                className="btn-date"
-                                variant="success"
-                                onClick={handleButtonDateClick}
-                            >
-                                {console.log(startDate.toLocaleDateString())}
-                                {startDate.toLocaleDateString()}
-                            </Button>
-                            {isDatePickerOpen && (
-                                <CalendarContainer className="date-picker" >
-                                    <ReactDatePicker
-                                        locale={fr}
-                                        dateFormat={"dd/MM/yyyy"}
-                                        selected={startDate}
-                                        onChange={handleDateChange}
-                                        inline
-                                    />
-                                </CalendarContainer>
-
-                            )}
-                        </Form.Group>
-
-
-
-
-                        <Form.Group as={Col} className="mb-3" >
-                            <Form.Label >Folio :</Form.Label>
-                            <Form.Control
-                                id="folio"
-                                className={`input-control
+                    <Form.Group as={Col} className="mb-3" >
+                        <Form.Label >Folio :</Form.Label>
+                        <Form.Control
+                            id="folio"
+                            className={`input-control
                                 ${fields.folio.valid === null ? "" : fields.folio.valid ? "is-valid" : "is-invalid"}
                                 `}
-                                placeholder="Folio du mouvement"
-                                value={fields.folio.value}
-                                onChange={handleChange}
-                                pattern={"alpha_num"}
-                                maxLength={5}
-                            />
-                        </Form.Group>
-                    </Row>
+                            placeholder="Folio du mouvement"
+                            value={fields.folio.value}
+                            onChange={handleChange}
+                            pattern={"alpha_num"}
+                            maxLength={5}
+                        />
+                    </Form.Group>
+                </Row>
 
 
 
-                    <Row>
-                        <Form.Group as={Col} className="mb-3" >
-                            <Form.Label >Type :</Form.Label>
-                            <Form.Control
-                                id="type"
-                                label="Type du mouvement"
-                                className={`input-control
+                <Row>
+                    <Form.Group as={Col} className="mb-3" >
+                        <Form.Label >Type :</Form.Label>
+                        <Form.Control
+                            id="type"
+                            label="Type du mouvement"
+                            className={`input-control
                                     ${fields.type.valid === null ? "" : fields.type.valid ? "is-valid" : "is-invalid"}
                                     `}
-                                placeholder="Type du mouvement"
-                                value={fields.type.value}
-                                onChange={handleChange}
-                                pattern={"alpha_num"}
-                                maxLength={5}
-                                autoFocus={true}
-                            />
+                            placeholder="Type du mouvement"
+                            value={fields.type.value}
+                            onChange={handleChange}
+                            pattern={"alpha_num"}
+                            maxLength={5}
 
-                        </Form.Group>
+                        />
 
-                        <Form.Group as={Col} className="mb-3" >
-                            <Form.Label>Montant :</Form.Label>
-                            <Form.Control
-                                id="mvt"
-                                className={`input-control
+                    </Form.Group>
+
+                    <Form.Group as={Col} className="mb-3" >
+                        <Form.Label>Montant :</Form.Label>
+                        <Form.Control
+                            id="mvt"
+                            className={`input-control
                                 ${fields.mvt.valid === null ? "" : fields.mvt.valid ? "is-valid" : "is-invalid"}
                                 `}
-                                placeholder="Montant du mouvement"
-                                value={fields.mvt.value}
-                                onChange={handleChange}
-                                pattern={"float"}
-                                required
-                            />
-                        </Form.Group>
-                    </Row>
+                            placeholder="Montant du mouvement"
+                            value={fields.mvt.value}
+                            onChange={handleChange}
+                            pattern={"float"}
+                            required
+                        />
+                    </Form.Group>
+                </Row>
 
-                </Form>
-            </Validation>
-        </>
+            </Form>
+        </Validation>
     )
 }
 
