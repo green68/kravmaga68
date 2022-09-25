@@ -7,21 +7,33 @@
 
 ## Suivi :
 
+### FIX :
+
+
 ### TODO :
 - [ ] disabled validation on tabulation if error in UserInit.jsx
 - [ ] drop file in DropFile.jsx (see [react-dropzone.js]( https://react-dropzone.js.org/#section-previews))
 
 
 - [ ] cashItem card design in cardPage
+- [ ] cashItem set auto folio 
+    ex: "2022-001" -> console.log(`${year}-${id.padStart(3, '0')}`)
 
 - [ ] bank form 
 - [ ] bankPage list bankItems
 - [ ] save new bankItem
 - [ ] bankItem card design in bankPage
+- [ ] bankItem if type="retrait" mvt negative => set an instance for cashItem 
+- [ ] bankItem if type="depot" mvt positive => set an instance for cashItem 
 
 
 ### DONE :
-<!-- 2022-09-24 -->
+<!-- 2022-09-25 -->
+- [x] fix cursor autofocus in cashForm
+- [x] fix error on year===null & path Menu.Cash
+
+- [x] fix tool delete datas not deleted bank & cash items <!-- 2022-09-24 -->
+- [x] fix label to truncable in CashItemCard
 - [x] change icon for png and favicon
 
 - [x] save new cashItem <!-- 2022-09-21 -->
