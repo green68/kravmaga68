@@ -64,16 +64,13 @@ export default function App() {
   };
 
   function handleChangeCash(datas) {
-    // console.log(datas)
     const newUser = new User( (JSON.stringify(user)))
-    // console.log(year.id, newUser.getYears().getYear(year.id).getCashItems())
     newUser.getYears().getYear(year.id).setCashItems(datas)
     userUpdate(JSON.stringify(newUser))
   }
 
   const userUpdate = (userDatas) => {
     setUser(new User(userDatas))
-    // debugger
   }
 
   // for resize page 
@@ -99,6 +96,7 @@ export default function App() {
   // update year and saveToLocale after user change
   useEffect(() => {
     setYear(user.name ? user.years?.getLast() : null)
+    console.log("App.js dans useEffect[user] :",year);
     DatasClass.saveToLocale(user)
   }, [user])
 
