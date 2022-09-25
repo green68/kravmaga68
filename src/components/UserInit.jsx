@@ -41,6 +41,8 @@ const UserInit = ({ show, handleInit }) => {
                     id: fields.date.value,
                     bank_report: fields.bank.value,
                     cash_report: fields.cash.value,
+                    bank_items: [],
+                    cash_items: [],
                 }
             ]
         })
