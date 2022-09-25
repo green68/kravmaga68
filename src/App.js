@@ -96,7 +96,6 @@ export default function App() {
   // update year and saveToLocale after user change
   useEffect(() => {
     setYear(user.name ? user.years?.getLast() : null)
-    console.log("App.js dans useEffect[user] :",year);
     DatasClass.saveToLocale(user)
   }, [user])
 
@@ -139,7 +138,12 @@ export default function App() {
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
           <Route path={pathTo(Menu.Bank)} element={<BankPage />} />
           <Route path={pathTo(Menu.Cash)} element={
-            <CashPage cashDatas={year?.getCashItems()} onChange={(datas) => handleChangeCash(datas)} />
+            
+            <CashPage 
+              cashDatas={year ? year.getCashItems(): []} 
+              onChange={(datas) => handleChangeCash(datas)}
+            />
+             
           } />
           <Route path={pathTo(Menu.Tools)} element={<ToolsPage handleUpdate={userUpdate} />} />
           <Route path="*" element={<Navigate to={pathTo(Menu.Home)} />} />
