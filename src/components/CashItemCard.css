@@ -1,3 +1,4 @@
+/* TODO: put in App.css ? */
 .item-card {
     background-color: var(--bs-dark) ;
     margin-bottom: .5rem;
@@ -15,6 +16,9 @@
     display: grid;
     grid-template-columns: max-content auto auto max-content;
     gap: .5rem;
+}
+.bank.item-card__title {
+    grid-template-columns: max-content auto auto max-content max-content;
 }
 
 .item-card__body {
