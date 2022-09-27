@@ -24,6 +24,17 @@ input:-internal-autofill-selected {
     border: 3px solid white;
 }
 
+.input-control.is-valid,
+.form-control.is-valid,
+.form-select.is-valid,
+.input-control.is-invalid,
+.form-control.is-invalid,
+.form-select.is-invalid
+{
+    background-image: none;
+    padding-inline: 0.75rem;
+}
+
 .input-control:focus,
 .form-control:focus,
 .form-select:focus,
@@ -36,3 +47,4 @@ input:-internal-autofill-selected {
 {
     box-shadow: 0 0 0 0.4rem rgba(228, 228, 235, 0.25);
 }
+
