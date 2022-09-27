@@ -1,5 +1,5 @@
-import { Card } from "react-bootstrap"
 import { CashItem } from "../classes/CashItem"
+// TODO: put in App.css ?
 import "./CashItemCard.css"
 
 /**
