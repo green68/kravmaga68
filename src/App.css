@@ -84,3 +84,8 @@ label {
 .date-picker {
   position: absolute;
 }
+
+.form-switch .form-check-input {
+  width: 4rem;
+  height: 2.3rem;
+}
