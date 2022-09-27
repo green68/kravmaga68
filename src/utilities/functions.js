@@ -19,6 +19,11 @@ const downloadFile = (content, fileName, contentType) => {
     a.click();
 }
 
+/**
+ * 
+ * @param {object} obj 
+ * @returns {[[key, value]]} //TODO: ???
+ */
 const objectToArray = (obj) => {
     const datas = []
     for (const [key, value] of Object.entries(obj)) {
@@ -43,7 +48,7 @@ const isInputValid = (eventTarget) => {
     
     if(!eventTarget?.pattern) {
 
-        console.log("Pas de pattern pour :",eventTarget);
+        console.log("Functions : isInputValid => no pattern for :",eventTarget);
         if(eventTarget.required && eventTarget.value.trim() === "") return false
         
         return true

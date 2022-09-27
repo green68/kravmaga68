@@ -39,12 +39,12 @@ function BankPage({ bankDatas, onChange }) {
 const handleAddBankItem = (e) => {
   setBankItemDatas(structuredClone(bankItemDatasInit) )
   setIsFormBankShow(true)
-  console.log("ajout");
+  console.log("BankPage : handleAddBankItem");
 }
 
 /** @param {MouseEvent|TouchEvent} e */
 const handleCloseFormBankItem = (e) => {
-  console.log("handleCloseFormBankItem dans BankPage");
+  console.log("BankPage : handleCloseFormBankItem");
   setBankItemDatas(structuredClone(bankItemDatasInit))
   setIsFormBankShow(false)
 }
@@ -52,7 +52,7 @@ const handleCloseFormBankItem = (e) => {
   /** @param {bankItem} datas */
   const handleChange = (datas) => {
     const temp = bankItemsArray
-    console.log(datas);
+    console.log("BankPage : handleChange");
     if (datas.id === -1) {
       datas.id = temp.length + 1
       const bankItem = new BankItem(datas)
@@ -66,8 +66,8 @@ const handleCloseFormBankItem = (e) => {
   const BankItemsList = () => {
 
     if (bankItemsArray.length !== 0) {
-      console.log(bankItemsArray)
-      console.log(bankItemsArray.length);
+      // console.log(bankItemsArray)
+      // console.log(bankItemsArray.length);
       return bankItemsArray.map(item => <BankItemCard key={item.id} datas={item} />)
     }
     return (

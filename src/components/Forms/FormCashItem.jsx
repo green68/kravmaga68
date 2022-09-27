@@ -47,7 +47,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        console.log(e.target.id, e.target.value, valid)
+        // console.log(e.target.id, e.target.value, valid)
         setFields({
             ...fields,
             newFields

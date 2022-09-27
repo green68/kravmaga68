@@ -8,7 +8,7 @@ import { isInputValid } from "../../utilities/Functions";
 
 const FormBankItem = ({ onClose, onChange, datas }) => {
 
-    console.log(datas);
+    // console.log(datas);
     const fieldsDatas = { ...datas }
 
     const [fields, setFields] = useState(fieldsDatas)
@@ -52,7 +52,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        console.log(e.target.id, e.target.value, valid)
+        // console.log(e.target.id, e.target.value, valid)
         setFields({
             ...fields,
             newFields
@@ -124,7 +124,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             variant="success"
                             onClick={handleButtonDateClick}
                         >
-                            {console.log(startDate.toLocaleDateString())}
+                            {/* {console.log(startDate.toLocaleDateString())} */}
                             {startDate.toLocaleDateString()}
                         </Button>
                         {isDatePickerOpen && (

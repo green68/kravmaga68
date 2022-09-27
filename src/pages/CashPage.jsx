@@ -32,12 +32,12 @@ function CashPage({ cashDatas, onChange }) {
   const handleAddCashItem = (e) => {
     setCashItemDatas(structuredClone(cashItemDatasInit) )
     setIsFormCashShow(true)
-    console.log("ajout");
+    console.log("CashPage : handleAddCashItem");
   }
   
   /** @param {MouseEvent|TouchEvent} e */
   const handleCloseFormCashItem = (e) => {
-    console.log("handleCloseFormCashItem dans CashPage");
+    console.log("CashPage : handleCloseFormCashItem");
     setCashItemDatas(structuredClone(cashItemDatasInit))
     setIsFormCashShow(false)
   }
@@ -45,7 +45,7 @@ function CashPage({ cashDatas, onChange }) {
   /** @param {cashItem} datas */
   const handleChange = (datas) => {
     const temp = cashItemsArray
-    console.log(datas);
+    console.log("CashPage : handleChange");
     if (datas.id === -1) {
       datas.id = temp.length + 1
       const cashItem = new CashItem(datas)
@@ -54,14 +54,13 @@ function CashPage({ cashDatas, onChange }) {
       onChange(cashItemsArray)
     }
     setIsFormCashShow(false)
-    // console.log(cashItemsArray)
   }
 
   const CashItemsList = () => {
 
     if (cashItemsArray.length !== 0) {
-      console.log(cashItemsArray)
-      console.log(cashItemsArray.length);
+      // console.log(cashItemsArray)
+      // console.log(cashItemsArray.length);
       return cashItemsArray.map(item => <CashItemCard key={item.id} datas={item} />)
     }
     return (
