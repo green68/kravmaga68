@@ -19,8 +19,8 @@ const bankItemDatasInit = {
   folio: { valid: true, value: "" },
   /**@type {{valid: boolean, value: string}} */
   mvt: { valid: null, value: "" },
-  /**@type {{valid: boolean, value: boolean}} */
-  checked: { valid: true, value: false },
+  /**@type {{valid: boolean, value: string}} */
+  checked: { valid: true, value: "false" },
 }
 
 /**
