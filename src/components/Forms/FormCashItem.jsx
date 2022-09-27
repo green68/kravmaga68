@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
-import { Button, Col, FloatingLabel, Form, Modal, Row } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import ReactDatePicker, { CalendarContainer } from "react-datepicker";
 import { FaPiggyBank } from "react-icons/fa";
 import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
 
+/**
+ * 
+ * @param {{Function, Function, CashItem}} props {onClose, onChange, datas}
+ */
 const FormCashItem = ({ onClose, onChange, datas }) => {
 
     console.log(datas);
