@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ReactDatePicker, { CalendarContainer } from "react-datepicker";
-// import { FaPiggyBank } from "react-icons/fa";
 import { BsBank } from "react-icons/bs";
 import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
@@ -46,6 +45,9 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
      * @param {MouseEvent} e 
      */
     const handleChange = (e) => {
+        if (e.target.id === "checked") {
+            e.target.value = e.target.checked
+        }
         const newFields = { ...fields }
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
@@ -153,11 +155,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             maxLength={5}
                         />
                     </Form.Group>
-                </Row>
 
-
-
-                <Row>
                     <Form.Group as={Col} className="mb-3" >
                         <Form.Label >Type :</Form.Label>
                         <Form.Control
@@ -176,7 +174,13 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
 
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" >
+                </Row>
+
+
+
+                <Row>
+
+                    <Form.Group as={Col} className="mb-3 col-9" >
                         <Form.Label>Montant :</Form.Label>
                         <Form.Control
                             id="mvt"
@@ -188,6 +192,17 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             onChange={handleChange}
                             pattern={"float"}
                             required
+                        />
+                    </Form.Group>
+
+                    <Form.Group as={Col} className="mb-3" >
+                        <Form.Label>Vérifié :</Form.Label>
+                        <Form.Check
+                            id="checked"
+                            type="switch"
+                            value={fields.checked.value}
+                            checked={fields.checked.value === "true"}
+                            onChange={handleChange}
                         />
                     </Form.Group>
                 </Row>
