@@ -27,6 +27,12 @@ class BankItem {
     getDate() {
         return this.date
     }
+    getChecked() {
+        return this.checked
+    }
+    isChecked() {
+        return this.checked === "true"
+    }
 
 }
 
