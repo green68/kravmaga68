@@ -17,7 +17,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
     const [isFormValid, setIsFormValid] = useState(false);
 
     const updateDatas = () => {
-        console.log("updateDatas dans FormBankItem");
+        console.log("FormBankItem : updateDatas");
         onChange({
             id: fields.id.value,
             date: fields.date.value,
@@ -31,7 +31,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
     }
 
     const handleClose = (e) => {
-        console.log("handleClose dans FormBankItem");
+        console.log("FormBankItem : handleClose");
         onClose()
     }
 
