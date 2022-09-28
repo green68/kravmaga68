@@ -17,7 +17,7 @@ const InputMvt = ({ mvt, handleChange }) => {
         const value = mvt.value.replace("-", "")
         mvt.value = checked ? "-"+value : value
         console.log(checked, mvt.value);
-    },[checked])
+    },[checked, mvt])
 
     return (
         <>
