@@ -24,6 +24,8 @@ import UserInit from "./components/UserInit";
 import { User } from "./classes/User";
 import ToolsPage from "./pages/ToolsPage";
 import { Menu } from "./utilities/Menu";
+import { CashItem } from "./classes/CashItem";
+import { BankItem } from "./classes/BankItem";
 
 // console.clear()
 
@@ -63,21 +65,34 @@ export default function App() {
     }
   };
 
+  /**
+   * 
+   * @param {CashItem[]} datas 
+   */
   function handleChangeCash(datas) {
     const newUser = new User( (JSON.stringify(user)))
     newUser.getYears().getYear(year.id).setCashItems(datas)
-    userUpdate(JSON.stringify(newUser))
+    userUpdate(newUser)
   }
+
+  /**
+   * 
+   * @param {BankItem[]} datas 
+   */
   function handleChangeBank(datas) {
     const newUser = new User( (JSON.stringify(user)))
     newUser.getYears().getYear(year.id).setBankItems(datas)
-    userUpdate(JSON.stringify(newUser))
+    userUpdate(newUser)
   }
   
-  const userUpdate = (userDatas) => {
-    setUser(new User(userDatas))
+  /**
+   * 
+   * @param {User} newUser 
+   */
+  const userUpdate = (newUser) => {
+    setUser(newUser)
   }
-
+  
   // for resize page 
   useEffect(() => {
     function handleResize() {
