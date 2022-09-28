@@ -5,6 +5,7 @@ import { FaPiggyBank } from "react-icons/fa";
 import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
+import InputMvt from "../InputMvt";
 
 /**
  * 
@@ -175,20 +176,10 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
 
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" >
-                        <Form.Label>Montant :</Form.Label>
-                        <Form.Control
-                            id="mvt"
-                            className={`input-control
-                                ${fields.mvt.valid === null ? "" : fields.mvt.valid ? "is-valid" : "is-invalid"}
-                                `}
-                            placeholder="Montant du mouvement"
-                            value={fields.mvt.value}
-                            onChange={handleChange}
-                            pattern={"float"}
-                            required
-                        />
+                    <Form.Group as={Col} className="mb-3 col-8" >
+                        <InputMvt mvt={fields.mvt} handleChange={handleChange} />
                     </Form.Group>
+
                 </Row>
 
             </Form>

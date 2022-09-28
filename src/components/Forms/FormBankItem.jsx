@@ -5,10 +5,10 @@ import { BsBank } from "react-icons/bs";
 import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
+import InputMvt from "../InputMvt";
 
 const FormBankItem = ({ onClose, onChange, datas }) => {
 
-    // console.log(datas);
     const fieldsDatas = { ...datas }
 
     const [fields, setFields] = useState(fieldsDatas)
@@ -52,7 +52,6 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        // console.log(e.target.id, e.target.value, valid)
         setFields({
             ...fields,
             newFields
@@ -176,23 +175,9 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
 
                 </Row>
 
-
-
                 <Row>
-
                     <Form.Group as={Col} className="mb-3 col-9" >
-                        <Form.Label>Montant :</Form.Label>
-                        <Form.Control
-                            id="mvt"
-                            className={`input-control
-                                ${fields.mvt.valid === null ? "" : fields.mvt.valid ? "is-valid" : "is-invalid"}
-                                `}
-                            placeholder="Montant du mouvement"
-                            value={fields.mvt.value}
-                            onChange={handleChange}
-                            pattern={"float"}
-                            required
-                        />
+                        <InputMvt mvt={fields.mvt} handleChange={handleChange} />
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" >
