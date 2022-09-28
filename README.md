@@ -14,7 +14,7 @@
 - [ ] disabled validation on tabulation if error in UserInit.jsx
 - [ ] drop file in DropFile.jsx (see [react-dropzone.js]( https://react-dropzone.js.org/#section-previews))
 
-- [ ] bankItem card add cheque & checked
+- [ ] bankItem card add cheque
 - [ ] bankItem card design in cardPage
 - [ ] bankItem set auto folio 
     ex: "2022-001" -> console.log(`${year}-${id.padStart(3, '0')}`)
@@ -28,8 +28,10 @@
 
 
 ### DONE :
-<!-- 2022-09-26 -->
-- [x] bank form add check
+<!-- 2022-09-28 -->
+- [x] implement component InputMvt
+
+- [x] bank form add check <!-- 2022-09-26 -->
 - [x] bank form 
 - [x] bankPage list bankItems
 - [x] save new bankItem
