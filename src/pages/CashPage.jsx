@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Alert, Button, Container } from "react-bootstrap";
+import { FaPlus } from "react-icons/fa";
 import { CashItem } from "../classes/CashItem";
 import CashItemCard from "../components/CashItemCard";
 import FormCashItem from "../components/Forms/FormCashItem";
@@ -71,22 +72,32 @@ function CashPage({ cashDatas, onChange }) {
   }
 
   return (
-    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto auto 1fr"}}>
-      <h2 className="text-center">Caisse</h2>
-      <Container>
-        <Button onClick={handleAddCashItem} >Ajouter</Button>
+    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto 1fr"}}>
+
+      <Container className="d-flex justify-content-between p-3">
+        <Container></Container>
+        <Container>
+          <h2 className="text-center">Caisse</h2>
+
+        </Container>
+        <Container className="d-flex align-items-center justify-content-end " >
+          <Button onClick={handleAddCashItem} ><FaPlus/></Button>
+        </Container>
       </Container>
+
       <Container className="my-3 overflow-hidden">
         <Container className="overflow-auto h-100 py-2">
           <CashItemsList />
         </Container>
       </Container>
+
       {isFormCashShow
         && <FormCashItem
           onClose={handleCloseFormCashItem}
           onChange={handleChange}
           datas={ cashItemDatas }
         />}
+
     </Container>
 
   )

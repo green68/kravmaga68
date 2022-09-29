@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Alert, Button, Container } from "react-bootstrap"
+import { FaPlus } from "react-icons/fa"
 import { BankItem } from "../classes/BankItem"
 import BankItemCard from "../components/BankItemCard"
 import FormBankItem from "../components/Forms/FormBankItem"
@@ -78,22 +79,32 @@ const handleCloseFormBankItem = (e) => {
   }
 
   return (
-    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto auto 1fr"}}>
-      <h2 className="text-center">Banque</h2>
-      <Container>
-        <Button onClick={handleAddBankItem} >Ajouter</Button>
+    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto 1fr"}}>
+      
+      <Container className="d-flex justify-content-between p-3">
+        <Container></Container>
+        <Container>
+          <h2 className="text-center">Banque</h2>
+
+        </Container>
+        <Container className="d-flex align-items-center justify-content-end " >
+          <Button onClick={handleAddBankItem} ><FaPlus/></Button>
+        </Container>
       </Container>
+
       <Container className="my-3 overflow-hidden">
         <Container className="overflow-auto h-100 py-2">
           <BankItemsList />
         </Container>
       </Container>
+
       {isFormBankShow
         && <FormBankItem
           onClose={handleCloseFormBankItem}
           onChange={handleChange}
           datas={ bankItemDatas }
         />}
+        
     </Container>
 
   )
