@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Form, InputGroup, ToggleButton } from "react-bootstrap";
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 
 const InputMvt = ({ mvt, handleChange }) => {
@@ -44,7 +45,7 @@ const InputMvt = ({ mvt, handleChange }) => {
                     onChange={(e) => {setChecked(e.currentTarget.checked)}}
                     tabIndex="-1"
                 >
-                    {checked ? "-" : "+"}
+                    {checked ? <FaMinus/> : <FaPlus/>}
                 </ToggleButton>
             </InputGroup>
         </>
