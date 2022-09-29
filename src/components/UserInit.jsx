@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { isInputValid } from "../utilities/Functions";
 import { FaCog } from "react-icons/fa"
+import { User } from "../classes/User";
 
 const UserInit = ({ show, handleInit }) => {
 
@@ -33,8 +34,8 @@ const UserInit = ({ show, handleInit }) => {
     }
 
     const saveForm = (e) => {
-        console.log("Initialisation éffectué");
-        handleInit({
+        console.log("UserInit : saveForm => ok");
+        const newUser = new User({
             name: fields.name.value,
             years: [
                 {
@@ -46,6 +47,7 @@ const UserInit = ({ show, handleInit }) => {
                 }
             ]
         })
+        handleInit(newUser)
         setFields(fieldsDatas)
     }
 

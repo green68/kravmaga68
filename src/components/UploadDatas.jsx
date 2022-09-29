@@ -12,13 +12,14 @@ function UploadDatas({ onClose, onUpload }) {
 
     const loadFromFile = (e) => {
         console.log(userDatas);
-        onUpload(userDatas)
+        const newUser = new User(userDatas)
+        onUpload(newUser)
         // TODO: send message for datas change
         handleClose()
     }
 
-    const handleClose = (e) => {
-        console.log("handleClose dans UploadDatas");
+    const handleClose = () => {
+        console.log("UploadDatas : handleClose");
         console.log(userDatas);
         setisShow(false)
         onClose()

@@ -90,7 +90,12 @@ export default function App() {
    * @param {User} newUser 
    */
   const userUpdate = (newUser) => {
-    setUser(newUser)
+    if (newUser instanceof User) {
+      setUser(newUser)
+    } else {
+      console.log("App : userUpdate => newUser not User ?");
+      setUser(new User(newUser))
+    }
   }
   
   // for resize page 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { User } from "../classes/User";
 import { pathTo } from "../utilities/Functions";
 import { Menu } from "../utilities/Menu";
 import Validation from "./Validation";
@@ -12,11 +13,8 @@ const ResetDatas = ({ onClose, onReset }) => {
 
     const resetDatas = () => {
         console.log("resetDatas");
-        // debugger
-        onReset({
-            name: null,
-            years: []
-        })
+        const newUser = new User()
+        onReset(newUser)
         setisShow(false)
         onClose()
         navigate(pathTo(Menu.Home));
