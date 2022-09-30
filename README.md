@@ -28,8 +28,10 @@
 
 
 ### DONE :
-<!-- 2022-09-28 -->
-- [x] implement component InputMvt
+<!-- 2022-09-30 -->
+- [x] fix change date in Form for bank & cash
+
+- [x] implement component InputMvt <!-- 2022-09-28 -->
 
 - [x] bank form add check <!-- 2022-09-26 -->
 - [x] bank form 

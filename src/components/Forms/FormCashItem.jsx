@@ -34,7 +34,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
     }
 
     const handleClose = (e) => {
-        console.log("handleClose dans FormCashItem");
+        console.log("FormCashItem : handleClose");
         onClose()
     }
 
@@ -52,11 +52,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        // console.log(e.target.id, e.target.value, valid)
-        setFields({
-            ...fields,
-            newFields
-        })
+        setFields({...newFields})
         if (
             fields.label.valid
             && fields.date.valid
@@ -70,15 +66,16 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         }
     }
 
-    const handleDateChange = (e) => {
+    /**
+     * 
+     * @param {Date} newDate
+     */
+    const handleDateChange = (newDate) => {
         setIsDatePickerOpen(!isDatePickerOpen)
-        setStartDate(e)
+        setStartDate(newDate)
         const newFields = { ...fields }
-        newFields.date.value = startDate
-        setFields({
-            ...fields,
-            newFields
-        })
+        newFields.date.value = newDate
+        setFields({...newFields })
     }
 
     return (

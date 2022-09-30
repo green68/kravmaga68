@@ -52,10 +52,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        setFields({
-            ...fields,
-            newFields
-        })
+        setFields({...newFields })
         if (
             fields.label.valid
             && fields.date.valid
@@ -71,15 +68,16 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         }
     }
 
-    const handleDateChange = (e) => {
+    /**
+     * 
+     * @param {Date} newDate
+     */
+    const handleDateChange = (newDate) => {
         setIsDatePickerOpen(!isDatePickerOpen)
-        setStartDate(e)
+        setStartDate(newDate)
         const newFields = { ...fields }
-        newFields.date.value = startDate
-        setFields({
-            ...fields,
-            newFields
-        })
+        newFields.date.value = newDate
+        setFields({...newFields })
     }
 
     return (
