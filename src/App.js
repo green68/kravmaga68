@@ -19,13 +19,16 @@ import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
 import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/Functions";
-import { jsonDatas } from "./datas/datas.json";
 import UserInit from "./components/UserInit";
 import { User } from "./classes/User";
 import ToolsPage from "./pages/ToolsPage";
 import { Menu } from "./utilities/Menu";
+
+/* eslint-disable */
+import { jsonDatas } from "./datas/datas.json";
 import { CashItem } from "./classes/CashItem";
 import { BankItem } from "./classes/BankItem";
+/* eslint-enable */
 
 // console.clear()
 
@@ -157,7 +160,6 @@ export default function App() {
       </Header>
       <main>
         <Routes>
-          {/* <Route path="/" element={<HomePage />} /> */}
           <Route path={pathTo(Menu.Home)} element={<HomePage />} />
           <Route path={pathTo(Menu.Balance)} element={<BalancePage />} />
           <Route path={pathTo(Menu.Year)} element={<YearPage />} />
