@@ -2,10 +2,19 @@ import { useState } from "react"
 import { Form } from "react-bootstrap";
 import "./DropFile.css"
 
+/**
+ * 
+ * @param {{handleDatas: (datas: JSON) => }} props
+ * @returns 
+ */
 const DropFile = ({handleDatas}) => {
 
   const [fileInput, setFileInput] = useState(null)
 
+  /**
+   * 
+   * @param {Event} e 
+   */
   const handleFileInput = (e) => {
     // console.log(e.target.files[0]);
     if (e.target.files.length > 0) {
@@ -17,6 +26,10 @@ const DropFile = ({handleDatas}) => {
     }
   }
 
+  /**
+   * 
+   * @param {ProgressEvent} e 
+   */
   const onReaderLoad = (e) => {
     console.log(e.target.result)
     handleDatas(e.target.result)

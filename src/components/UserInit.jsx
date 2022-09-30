@@ -8,6 +8,11 @@ import { isInputValid } from "../utilities/Functions";
 import { FaCog } from "react-icons/fa"
 import { User } from "../classes/User";
 
+/**
+ * 
+ * @param {{show: boolean, handleInit: (user: User) => void}} props 
+ * @returns 
+ */
 const UserInit = ({ show, handleInit }) => {
 
     const fieldsDatas = {

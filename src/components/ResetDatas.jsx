@@ -6,6 +6,10 @@ import { pathTo } from "../utilities/Functions";
 import { Menu } from "../utilities/Menu";
 import Validation from "./Validation";
 
+/**
+ * @param {{onClose: () => void, onReset: (user: User) => void}} props 
+ * @returns 
+ */
 const ResetDatas = ({ onClose, onReset }) => {
     let navigate = useNavigate();
 
@@ -20,6 +24,10 @@ const ResetDatas = ({ onClose, onReset }) => {
         navigate(pathTo(Menu.Home));
     }
 
+    /**
+     * 
+     * @param {Event} e 
+     */
     const handleClose = (e) => {
         console.log("handleClose dans ResetDatas");
         setisShow(false)
@@ -36,7 +44,7 @@ const ResetDatas = ({ onClose, onReset }) => {
                 color={"danger"}
                 callback={resetDatas}
             >
-            <p>Cette action effacera toutes les données.</p>
+                <p>Cette action effacera toutes les données.</p>
             </Validation>
         </>
     )

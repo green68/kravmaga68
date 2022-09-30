@@ -5,6 +5,16 @@ import { CashItem } from "../classes/CashItem";
 import CashItemCard from "../components/CashItemCard";
 import FormCashItem from "../components/Forms/FormCashItem";
 
+/**
+ * @typedef {Object} CashItemObject
+ * @property {string} id
+ * @property {null|Date} date
+ * @property {string} type
+ * @property {string} folio
+ * @property {string} mvt
+ * 
+ */
+
 const cashItemDatasInit = {
   /**@type {{valid: boolean, value: number}} */
   id: { valid: null, value: -1 },
@@ -21,7 +31,7 @@ const cashItemDatasInit = {
 }
 
 /**
- * @param {{cashDatas: Array<CashItem>, onChange: Function}} props
+ * @param {{cashDatas: CashItem[], onChange: (datas: CashItem[]) => void}} props
  */
 function CashPage({ cashDatas, onChange }) {
 
@@ -43,7 +53,10 @@ function CashPage({ cashDatas, onChange }) {
     setIsFormCashShow(false)
   }
 
-  /** @param {cashItem} datas */
+  /**
+   * 
+   * @param {CashItemObject} datas
+   */
   const handleChange = (datas) => {
     const temp = cashItemsArray
     console.log("CashPage : handleChange");

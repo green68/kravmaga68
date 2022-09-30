@@ -26,29 +26,29 @@ const bankItemDatasInit = {
 
 /**
  * 
- * @param {{bankDatas: Array<BankItem>, onChange: Function}} props
+ * @param {{bankDatas: BankItem[], onChange: (datas: BankItem[]) => void}} props
  * @returns 
  */
 function BankPage({ bankDatas, onChange }) {
 
-  const [bankItemsArray, setBankItemsArray] = useState([...bankDatas] )
+  const [bankItemsArray, setBankItemsArray] = useState([...bankDatas])
   const [isFormBankShow, setIsFormBankShow] = useState(false)
   const [bankItemDatas, setBankItemDatas] = useState(structuredClone(bankItemDatasInit))
-  
 
-/** @param {MouseEvent|TouchEvent} e */
-const handleAddBankItem = (e) => {
-  setBankItemDatas(structuredClone(bankItemDatasInit) )
-  setIsFormBankShow(true)
-  console.log("BankPage : handleAddBankItem");
-}
 
-/** @param {MouseEvent|TouchEvent} e */
-const handleCloseFormBankItem = (e) => {
-  console.log("BankPage : handleCloseFormBankItem");
-  setBankItemDatas(structuredClone(bankItemDatasInit))
-  setIsFormBankShow(false)
-}
+  /** @param {MouseEvent|TouchEvent} e */
+  const handleAddBankItem = (e) => {
+    setBankItemDatas(structuredClone(bankItemDatasInit))
+    setIsFormBankShow(true)
+    console.log("BankPage : handleAddBankItem");
+  }
+
+  /** @param {MouseEvent|TouchEvent} e */
+  const handleCloseFormBankItem = (e) => {
+    console.log("BankPage : handleCloseFormBankItem");
+    setBankItemDatas(structuredClone(bankItemDatasInit))
+    setIsFormBankShow(false)
+  }
 
   /** @param {bankItem} datas */
   const handleChange = (datas) => {
@@ -79,8 +79,8 @@ const handleCloseFormBankItem = (e) => {
   }
 
   return (
-    <Container className="d-grid overflow-hidden h-100" style={{gridTemplateRows: "auto 1fr"}}>
-      
+    <Container className="d-grid overflow-hidden h-100" style={{ gridTemplateRows: "auto 1fr" }}>
+
       <Container className="d-flex justify-content-between p-3">
         <Container></Container>
         <Container>
@@ -88,7 +88,9 @@ const handleCloseFormBankItem = (e) => {
 
         </Container>
         <Container className="d-flex align-items-center justify-content-end " >
-          <Button onClick={handleAddBankItem} ><FaPlus/></Button>
+          <Button onClick={ handleAddBankItem } >
+            <FaPlus />
+          </Button>
         </Container>
       </Container>
 
@@ -100,14 +102,14 @@ const handleCloseFormBankItem = (e) => {
 
       {isFormBankShow
         && <FormBankItem
-          onClose={handleCloseFormBankItem}
-          onChange={handleChange}
+          onClose={ handleCloseFormBankItem }
+          onChange={ handleChange }
           datas={ bankItemDatas }
         />}
-        
+
     </Container>
 
   )
-  }
-  
-  export default BankPage
+}
+
+export default BankPage

@@ -1,11 +1,17 @@
 import { useState } from "react"
 import { Button } from "react-bootstrap"
-import { FaFileDownload, FaFileExport, FaFileImport, FaFileUpload, FaTrash } from "react-icons/fa"
+import { FaFileExport, FaFileImport, FaTrash } from "react-icons/fa"
 import DownloadDatas from "../components/DownloadDatas"
 import ResetDatas from "../components/ResetDatas"
 import UploadDatas from "../components/UploadDatas"
 import "./ToolsPage.css"
+// eslint-disable-next-line
+import { User } from "../classes/User"
 
+/**
+ * @param {{handleUpdate: (user: User) => void}} props
+ * @returns 
+ */
 const ToolsPage = ({ handleUpdate }) => {
 
   const [isShowSaveDatas, setIsShowSaveDatas] = useState(false)
@@ -14,8 +20,8 @@ const ToolsPage = ({ handleUpdate }) => {
   
   return (
     <>
-      {isShowResetDatas && <ResetDatas onClose={() => setIsShowResetDatas(false)} onReset={(datas) => handleUpdate(datas)} />}
-      {isShowUploadDatas && <UploadDatas onClose={() => setIsShowUploadDatas(false)} onUpload={(datas) => handleUpdate(datas)} />}
+      {isShowResetDatas && <ResetDatas onClose={() => setIsShowResetDatas(false)} onReset={(user) => handleUpdate(user)} />}
+      {isShowUploadDatas && <UploadDatas onClose={() => setIsShowUploadDatas(false)} onUpload={(user) => handleUpdate(user)} />}
       {isShowSaveDatas && <DownloadDatas onClose={() => setIsShowSaveDatas(false)} />}
       
       <div className="tools p-3">
