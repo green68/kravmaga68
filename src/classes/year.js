@@ -1,6 +1,18 @@
+// @ts-check
 import { BankItem } from "./BankItem";
 import { CashItem } from "./CashItem";
 
+/**
+ * @typedef {Object} YearObject
+ * @property {string} id
+ * @property {string} month
+ * @property {string} bank_report
+ * @property {string} cash_report
+ * @property {BankItem[]} bank_items 
+ * @property {CashItem[]} cash_items 
+ */
+
+/** @type YearObject */
 const initDatas = {
     "id": "2022",
     "month": "9",
@@ -11,16 +23,31 @@ const initDatas = {
 }
 
 class Year {
-    constructor(datas = {}) {
+    /**
+     * 
+     * @param {YearObject} datas 
+     */
+    constructor(datas = {...initDatas}) {
         // TODO: revoir si structuredClone() à la place de Object.assign()
         Object.assign(initDatas, datas)
-        Object.assign(this, initDatas)
+        // Object.assign(this, initDatas)
+        this.id = +initDatas.id
+        this.month = initDatas.month
+        this.bank_report = initDatas.bank_report
+        this.cash_report = initDatas.cash_report
+        this.bank_items = initDatas.bank_items
+        this.cash_items = initDatas.cash_items
+
         this.bank_items = this.bank_items.map(element => {
-            element = new BankItem(element)
+            if (!(element instanceof BankItem)) {
+                element = new BankItem(element)
+            }
             return element
         });
         this.cash_items = this.cash_items.map(element => {
-            element = new CashItem(element)
+            if (!(element instanceof CashItem)) {
+                element = new CashItem(element)
+            }
             return element
         });
     }

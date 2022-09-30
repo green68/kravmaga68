@@ -1,15 +1,34 @@
+// @ts-check
+
+/**
+ * @typedef {Object} BankItemObject
+ * @property {string} id
+ * @property {string|Date} date
+ * @property {string} label
+ * @property {string} type
+ * @property {string} cheque
+ * @property {string} folio
+ * @property {string} mvt
+ * @property {string} checked
+ */
+
+/** @type BankItemObject */
 const initDatas = {
     "id": "",
-    "date": null,
+    "date": "",
     "label": "",
     "type": "",
     "cheque": "",
     "folio": "",
     "mvt": "0.00",
-    "checked": false
+    "checked": "false"
 }
 
 class BankItem {
+    /**
+     * 
+     * @param {BankItemObject} datas 
+     */
     constructor(datas = {...initDatas}) {
         Object.assign(initDatas, datas)
         this.id = +initDatas.id

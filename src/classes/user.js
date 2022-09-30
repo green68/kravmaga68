@@ -1,9 +1,26 @@
+// @ts-check
 import { Years } from "./Years";
 import { isJSON } from "../utilities/Functions";
+// eslint-disable-next-line
 import { Year } from "./Year";
 
+/**
+ * @typedef {Object} UserObject
+ * @property {string|null} name
+ * @property {Year[]} years
+ */
+
+/** @type UserObject */
+const initUser = {
+    "name": null,
+    "years": []
+}
+
 class User {
-    constructor(options = {}) {
+    /** 
+     * @param {UserObject} options 
+     */
+    constructor(options = initUser) {
         this.name = options.name || null
         this.years = new Years(options.years)
         

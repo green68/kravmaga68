@@ -1,8 +1,10 @@
+// @ts-check
 
 /**
  * @typedef {Object} CashItemObject
  * @property {string} id
- * @property {null|Date} date
+ * @property {string|Date} date
+ * @property {string} label
  * @property {string} type
  * @property {string} folio
  * @property {string} mvt
@@ -12,7 +14,7 @@
 /** @type {CashItemObject} */
 const initDatas = {
     "id": "",
-    "date": null,
+    "date": "",
     "label": "",
     "type": "",
     "folio": "",
@@ -25,7 +27,7 @@ const initDatas = {
 class CashItem {
     /**
      * 
-     * @param {Object|CashItemObject} datas 
+     * @param {CashItemObject} datas 
      */
     constructor(datas = {...initDatas}) {
         Object.assign(initDatas, datas)

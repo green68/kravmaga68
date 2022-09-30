@@ -1,16 +1,16 @@
+// @ts-check
 import { Year } from "./Year"
 
-/**
- * 
- */
 class Years{
     /**
      * @constructor
      * @param {Array<Year>} datas An Array of Year or [] 
      */
     constructor(datas = []){
-        this.datas = datas.map(data => {
-            const year = new Year(data)
+        this.datas = datas.map(year => {
+            if (!(year instanceof Year)) {
+                year = new Year(year)
+            }
             return year
         })
         this.datas = this.datas.sort((a,b) => a.id - b.id)
@@ -25,7 +25,7 @@ class Years{
     }
     /**
      * 
-     * @param {int} id 
+     * @param {number} id 
      * @returns {Year|null} The Year that have this id or null
      */
     getYear(id) {
