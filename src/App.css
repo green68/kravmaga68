@@ -83,6 +83,7 @@ label {
 }
 .date-picker {
   position: absolute;
+  z-index: 10;
 }
 
 .form-switch .form-check-input {
