@@ -50,10 +50,8 @@ export default function App() {
   let navigate = useNavigate();
 
   // eslint-disable-next-line
-  const [user, setUser] = useState(DatasClass.getUser())
-  // eslint-disable-next-line
   const [menu, setMenu] = useState(Menu.Home);
-  // eslint-disable-next-line
+  const [user, setUser] = useState(DatasClass.getUser())
   const [year, setYear] = useState(user.name ? user.years?.getLast() : null);
 
   const changePage = (e) => {
