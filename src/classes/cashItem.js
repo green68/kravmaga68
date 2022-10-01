@@ -2,8 +2,8 @@
 
 /**
  * @typedef {Object} CashItemObject
- * @property {string} id
- * @property {string|Date} date
+ * @property {string|number} id
+ * @property {Date|string} date
  * @property {string} label
  * @property {string} type
  * @property {string} folio
@@ -11,32 +11,29 @@
  * 
  */
 
-/** @type {CashItemObject} */
+/** @type CashItemObject */
 const initDatas = {
-    "id": "",
-    "date": "",
+    "id": -1,
+    "date": new Date(),
     "label": "",
     "type": "",
     "folio": "",
-    "mvt": "0.00",
+    "mvt": "",
 }
 
-/**
- * 
- */
 class CashItem {
     /**
      * 
      * @param {CashItemObject} datas 
      */
-    constructor(datas = {...initDatas}) {
-        Object.assign(initDatas, datas)
-        this.id = +initDatas.id
-        this.date = new Date(initDatas.date)
-        this.label = initDatas.label
-        this.type = initDatas.type
-        this.folio = initDatas.folio
-        this.mvt = initDatas.mvt
+    constructor(datas = { ...initDatas }) {
+        console.log("CashItem: constructor");
+        this.id = datas.id || initDatas.id
+        this.date = new Date(datas.date) || new Date(initDatas.date)
+        this.label = datas.label || initDatas.label
+        this.type = datas.type || initDatas.type
+        this.folio = datas.folio || initDatas.folio
+        this.mvt = datas.mvt || initDatas.mvt
     }
     /**
      * 
@@ -46,8 +43,19 @@ class CashItem {
     getMvt() {
         return isNaN(parseFloat(this.mvt)) ? "0.00" : parseFloat(this.mvt).toFixed(2)
     }
+    getMvtEuro() {
+        return isNaN(parseFloat(this.mvt)) ? "0.00 €" : parseFloat(this.mvt).toFixed(2) + " €"
+    }
     getDate() {
         return this.date
+    }
+    getType() {
+        const len = 6
+        return this.type.substring(0,len).padEnd(len," ").toUpperCase()
+    }
+    getFolio() {
+        if (this.id === -1) return this.folio
+        return `C-${this.date.getFullYear()}-${this.id.toString().padStart(3,"0")}`
     }
 
 }
