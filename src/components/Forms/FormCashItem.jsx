@@ -6,15 +6,23 @@ import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
 import InputMvt from "../InputMvt";
+import { CashItem } from "../../classes/CashItem";
 
 /**
  * 
- * @param {{Function, Function, CashItem}} props {onClose, onChange, datas}
+ * @param {{onClose: () => void, onChange: (datas: CashItem) => void, datas: cashItem|null}} props 
  */
 const FormCashItem = ({ onClose, onChange, datas }) => {
 
     console.log(datas);
-    const fieldsDatas = { ...datas }
+    const fieldsDatas = {
+        id: { valid: null, value: datas.id },
+        date: { valid: true, value: datas.date },
+        label: { valid: null, value: datas.label },
+        type: { valid: true, value: datas.type },
+        folio: { valid: true, value: datas.folio },
+        mvt: { valid: null, value: datas.mvt },
+    }
 
     const [fields, setFields] = useState(fieldsDatas)
     const [startDate, setStartDate] = useState(fields.date.value)
@@ -22,7 +30,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
     const [isFormValid, setIsFormValid] = useState(false);
 
     const updateDatas = () => {
-        console.log("updateDatas dans FormCashItem");
+        console.log("FormCashItem: updateDatas");
         onChange({
             id: fields.id.value,
             date: fields.date.value,
@@ -52,7 +60,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        setFields({...newFields})
+        setFields({ ...newFields })
         if (
             fields.label.valid
             && fields.date.valid
@@ -75,7 +83,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         setStartDate(newDate)
         const newFields = { ...fields }
         newFields.date.value = newDate
-        setFields({...newFields })
+        setFields({ ...newFields })
     }
 
     return (
@@ -167,7 +175,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
                             value={fields.type.value}
                             onChange={handleChange}
                             pattern={"alpha_num"}
-                            maxLength={5}
+                            maxLength={6}
 
                         />
 
