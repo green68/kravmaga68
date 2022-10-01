@@ -1,3 +1,5 @@
+// @ts-check
+import React from "react"
 import { useState } from "react"
 import { Button } from "react-bootstrap"
 import { FaFileExport, FaFileImport, FaTrash } from "react-icons/fa"
