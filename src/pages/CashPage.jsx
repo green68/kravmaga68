@@ -28,10 +28,7 @@ function CashPage({ cashDatas, onChange }) {
     setIsFormCashShow(false)
   }
 
-  /**
-   * 
-   * @param {CashItem} datas
-   */
+  /** @param {CashItem} datas */
   const handleChange = (datas) => {
     const temp = [...cashItems]
     console.log("CashPage: handleChange");
