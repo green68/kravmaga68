@@ -6,10 +6,25 @@ import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
 import InputMvt from "../InputMvt";
+import { BankItem } from "../../classes/BankItem";
 
+/**
+ * 
+ * @param {{onClose: () => void, onChange: (datas: BankItem) => void, datas: bankItem|null}} props 
+ */
 const FormBankItem = ({ onClose, onChange, datas }) => {
 
-    const fieldsDatas = { ...datas }
+    console.log(datas);
+    const fieldsDatas = {
+        id: { valid: null, value: datas.id },
+        date: { valid: true, value: datas.date },
+        label: { valid: null, value: datas.label },
+        type: { valid: true, value: datas.type },
+        folio: { valid: true, value: datas.folio },
+        mvt: { valid: null, value: datas.mvt }, 
+        cheque: { valid: true, value: datas.cheque }, 
+        checked: { valid: true, value: datas.checked }, 
+    }
 
     const [fields, setFields] = useState(fieldsDatas)
     const [startDate, setStartDate] = useState(fields.date.value)
