@@ -1,3 +1,5 @@
+// @ts-check
+import React from "react"
 import { BankItem } from "../classes/BankItem"
 import {  FaRegSquare, FaRegCheckSquare } from "react-icons/fa"
 // import "./BankItemCard.css"
@@ -12,12 +14,20 @@ const BankItemCard = ({ datas }) => {
     const checkedColor = isChecked ? "var(--bs-primary)" : ""
 
     return (
-        <section className="item-card" style={{ '--border-color': `var(--bs-${color})` }}>
+        <section className={`item-card item-card-${color}`} >
             <div className="bank item-card__title">
-                <div>{datas.date?.toLocaleDateString()}</div>
-                <span className="text-uppercase">{datas.type}</span>
-                <span className="text-uppercase">{datas.folio}</span>
-                <span>{datas.getMvt()} € </span>
+                <div>
+                    {datas.getDate().toLocaleDateString()}
+                </div>
+                <div className="text-uppercase">
+                    {datas.getFolio()}
+                </div>
+                <div className="text-uppercase">
+                    {datas.type}
+                </div>
+                <div style={{marginLeft: "auto"}} >
+                    {datas.getMvtEuro()}
+                </div>
                 <div className="d-flex align-items-center" style={{color: `${checkedColor}`}}>
                     {isChecked ? <FaRegCheckSquare/> : <FaRegSquare/>}
                 </div>
