@@ -1,28 +1,11 @@
+// @ts-check
+import React from "react"
 import { useState } from "react"
 import { Alert, Button, Container } from "react-bootstrap"
 import { FaPlus } from "react-icons/fa"
 import { BankItem } from "../classes/BankItem"
 import BankItemCard from "../components/BankItemCard"
 import FormBankItem from "../components/Forms/FormBankItem"
-
-const bankItemDatasInit = {
-  /**@type {{valid: boolean, value: number}} */
-  id: { valid: null, value: -1 },
-  /**@type {{valid: boolean, value: Date}} */
-  date: { valid: true, value: new Date() },
-  /**@type {{valid: boolean, value: string}} */
-  label: { valid: null, value: "" },
-  /**@type {{valid: boolean, value: string}} */
-  type: { valid: true, value: "" },
-  /**@type {{valid: boolean, value: string}} */
-  cheque: { valid: true, value: "" },
-  /**@type {{valid: boolean, value: string}} */
-  folio: { valid: true, value: "" },
-  /**@type {{valid: boolean, value: string}} */
-  mvt: { valid: null, value: "" },
-  /**@type {{valid: boolean, value: string}} */
-  checked: { valid: true, value: "false" },
-}
 
 /**
  * 
@@ -31,50 +14,51 @@ const bankItemDatasInit = {
  */
 function BankPage({ bankDatas, onChange }) {
 
-  const [bankItemsArray, setBankItemsArray] = useState([...bankDatas])
+  const [bankItems, setBankItems] = useState(bankDatas.map(item => item))
+  
   const [isFormBankShow, setIsFormBankShow] = useState(false)
-  const [bankItemDatas, setBankItemDatas] = useState(structuredClone(bankItemDatasInit))
+  // eslint-disable-next-line
+  const [bankItem, setBankItem] = useState(new BankItem())
 
 
-  /** @param {MouseEvent|TouchEvent} e */
+  /** @param {React.MouseEvent<HTMLButtonElement, MouseEvent>} e */
   const handleAddBankItem = (e) => {
-    setBankItemDatas(structuredClone(bankItemDatasInit))
     setIsFormBankShow(true)
     console.log("BankPage : handleAddBankItem");
   }
 
-  /** @param {MouseEvent|TouchEvent} e */
-  const handleCloseFormBankItem = (e) => {
+  const handleCloseFormBankItem = () => {
     console.log("BankPage : handleCloseFormBankItem");
-    setBankItemDatas(structuredClone(bankItemDatasInit))
     setIsFormBankShow(false)
   }
 
   /** @param {bankItem} datas */
   const handleChange = (datas) => {
-    const temp = bankItemsArray
+    const temp = [...bankItems]
     console.log("BankPage : handleChange");
     if (datas.id === -1) {
+      console.log("BankPage: handleChange create new");
       datas.id = temp.length + 1
       const bankItem = new BankItem(datas)
       temp.push(bankItem)
-      setBankItemsArray(temp)
-      onChange(bankItemsArray)
+      setBankItems(temp)
+      onChange(temp)
     }
     setIsFormBankShow(false)
   }
 
+
   const BankItemsList = () => {
 
-    if (bankItemsArray.length !== 0) {
-      // console.log(bankItemsArray)
-      // console.log(bankItemsArray.length);
-      return bankItemsArray.map(item => <BankItemCard key={item.id} datas={item} />)
+    if (bankItems.length !== 0) {
+      return (
+        <>
+          {bankItems.map(item => <BankItemCard key={item.id} datas={item} />)}
+        </>
+      )
     }
     return (
-      <>
         <Alert variant="warning">Pas de données disponible</Alert>
-      </>
     )
   }
 
@@ -88,7 +72,7 @@ function BankPage({ bankDatas, onChange }) {
 
         </Container>
         <Container className="d-flex align-items-center justify-content-end " >
-          <Button onClick={ handleAddBankItem } >
+          <Button onClick={(e) => handleAddBankItem(e) } >
             <FaPlus />
           </Button>
         </Container>
@@ -104,7 +88,7 @@ function BankPage({ bankDatas, onChange }) {
         && <FormBankItem
           onClose={ handleCloseFormBankItem }
           onChange={ handleChange }
-          datas={ bankItemDatas }
+          datas={ bankItem }
         />}
 
     </Container>
