@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ReactDatePicker, { CalendarContainer } from "react-datepicker";
@@ -20,7 +21,6 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         date: { valid: true, value: datas.date },
         label: { valid: null, value: datas.label },
         type: { valid: true, value: datas.type },
-        folio: { valid: true, value: datas.folio },
         mvt: { valid: null, value: datas.mvt },
     }
 
@@ -36,7 +36,6 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
             date: fields.date.value,
             label: fields.label.value.trim(),
             type: fields.type.value,
-            folio: fields.folio.value,
             mvt: fields.mvt.value,
         })
     }
@@ -64,7 +63,6 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
         if (
             fields.label.valid
             && fields.date.valid
-            && fields.folio.valid
             && fields.type.valid
             && fields.mvt.valid
         ) {
@@ -144,23 +142,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
                         )}
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" >
-                        <Form.Label >Folio :</Form.Label>
-                        <Form.Control
-                            id="folio"
-                            className={`input-control
-                                ${fields.folio.valid === null ? "" : fields.folio.valid ? "is-valid" : "is-invalid"}
-                                `}
-                            placeholder="Folio du mouvement"
-                            value={fields.folio.value}
-                            onChange={handleChange}
-                            pattern={"alpha_num"}
-                            maxLength={5}
-                        />
-                    </Form.Group>
                 </Row>
-
-
 
                 <Row>
                     <Form.Group as={Col} className="mb-3" >
@@ -176,7 +158,6 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
                             onChange={handleChange}
                             pattern={"alpha_num"}
                             maxLength={6}
-
                         />
 
                     </Form.Group>

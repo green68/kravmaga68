@@ -6,7 +6,6 @@
  * @property {Date|string} date
  * @property {string} label
  * @property {string} type
- * @property {string} folio
  * @property {string} mvt
  * 
  */
@@ -17,7 +16,6 @@ const initDatas = {
     "date": new Date(),
     "label": "",
     "type": "",
-    "folio": "",
     "mvt": "",
 }
 
@@ -32,7 +30,6 @@ class CashItem {
         this.date = new Date(datas.date) || new Date(initDatas.date)
         this.label = datas.label || initDatas.label
         this.type = datas.type || initDatas.type
-        this.folio = datas.folio || initDatas.folio
         this.mvt = datas.mvt || initDatas.mvt
     }
     /**
@@ -54,7 +51,7 @@ class CashItem {
         return this.type.substring(0,len).padEnd(len," ").toUpperCase()
     }
     getFolio() {
-        if (this.id === -1) return this.folio
+        // if (this.id === -1) return this.folio
         return `C-${this.date.getFullYear()}-${this.id.toString().padStart(3,"0")}`
     }
 
