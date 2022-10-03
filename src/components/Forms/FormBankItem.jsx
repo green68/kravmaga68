@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ReactDatePicker, { CalendarContainer } from "react-datepicker";
 import { BsBank } from "react-icons/bs";
+// eslint-disable-next-line
 import { BankItem } from "../../classes/BankItem";
 import { isInputValid } from "../../utilities/Functions";
 import InputMvt from "../InputMvt";

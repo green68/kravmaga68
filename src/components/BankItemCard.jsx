@@ -1,5 +1,6 @@
 // @ts-check
 import React from "react"
+// eslint-disable-next-line
 import { BankItem } from "../classes/BankItem"
 import {  FaRegSquare, FaRegCheckSquare } from "react-icons/fa"
 // import "./BankItemCard.css"

@@ -1,33 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import { useEffect, useState } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { DatasClass } from "./datas/datas";
-import { NavLink, useNavigate, Routes, Route, Navigate } from "react-router-dom";
+import { BsBank } from "react-icons/bs";
 import {
   FaBalanceScale,
   FaCalendar,
   FaHome,
   FaPiggyBank,
-  FaTools,
+  FaTools
 } from "react-icons/fa";
-import { BsBank } from "react-icons/bs";
-import HomePage from "./pages/HomePage";
+import { Navigate, NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import "./App.css";
+import { User } from "./classes/User";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import UserInit from "./components/UserInit";
+import { DatasClass } from "./datas/datas";
 import BalancePage from "./pages/BalancePage";
 import BankPage from "./pages/BankPage";
 import CashPage from "./pages/CashPage";
+import HomePage from "./pages/HomePage";
+import ToolsPage from "./pages/ToolsPage";
 import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/Functions";
-import UserInit from "./components/UserInit";
-import { User } from "./classes/User";
-import ToolsPage from "./pages/ToolsPage";
 import { Menu } from "./utilities/Menu";
 
 /* eslint-disable */
-import { jsonDatas } from "./datas/datas.json";
-import { CashItem } from "./classes/CashItem";
 import { BankItem } from "./classes/BankItem";
+import { CashItem } from "./classes/CashItem";
+import { jsonDatas } from "./datas/datas.json";
 /* eslint-enable */
 
 // console.clear()

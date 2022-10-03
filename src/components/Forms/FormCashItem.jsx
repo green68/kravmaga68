@@ -7,6 +7,7 @@ import Validation from "../Validation";
 import fr from "date-fns/locale/fr";
 import { isInputValid } from "../../utilities/Functions";
 import InputMvt from "../InputMvt";
+// eslint-disable-next-line
 import { CashItem } from "../../classes/CashItem";
 
 /**
