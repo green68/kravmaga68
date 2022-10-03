@@ -6,7 +6,6 @@
  * @property {Date|string} date
  * @property {string} label
  * @property {string} type
- * @property {string} folio
  * @property {string} mvt
  * @property {string} cheque
  * @property {string} checked
@@ -19,7 +18,6 @@ const initDatas = {
     "label": "",
     "type": "",
     "cheque": "",
-    "folio": "",
     "mvt": "",
     "checked": "false"
 }
@@ -29,13 +27,12 @@ class BankItem {
      * 
      * @param {BankItemObject} datas 
      */
-    constructor(datas = {...initDatas}) {
+    constructor(datas = { ...initDatas }) {
         console.log("BankItem: constructor");
         this.id = datas.id || +initDatas.id
         this.date = new Date(datas.date) || new Date(initDatas.date)
         this.label = datas.label || initDatas.label
         this.type = datas.type || initDatas.type
-        this.folio = datas.folio || initDatas.folio
         this.mvt = datas.mvt || initDatas.mvt
         this.cheque = datas.cheque || initDatas.cheque
         this.checked = datas.checked || initDatas.checked
@@ -51,11 +48,10 @@ class BankItem {
     }
     getType() {
         const len = 6
-        return this.type.substring(0,len).padEnd(len," ").toUpperCase()
+        return this.type.substring(0, len).padEnd(len, " ").toUpperCase()
     }
     getFolio() {
-        if (this.id === -1) return this.folio
-        return `B-${this.date.getFullYear()}-${this.id.toString().padStart(3,"0")}`
+        return `B-${this.date.getFullYear()}-${this.id.toString().padStart(3, "0")}`
     }
     getChecked() {
         return this.checked

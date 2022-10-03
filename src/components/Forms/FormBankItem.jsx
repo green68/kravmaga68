@@ -1,12 +1,12 @@
-import { useState } from "react";
+import fr from "date-fns/locale/fr";
+import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ReactDatePicker, { CalendarContainer } from "react-datepicker";
 import { BsBank } from "react-icons/bs";
-import Validation from "../Validation";
-import fr from "date-fns/locale/fr";
+import { BankItem } from "../../classes/BankItem";
 import { isInputValid } from "../../utilities/Functions";
 import InputMvt from "../InputMvt";
-import { BankItem } from "../../classes/BankItem";
+import Validation from "../Validation";
 
 /**
  * 
@@ -20,10 +20,9 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         date: { valid: true, value: datas.date },
         label: { valid: null, value: datas.label },
         type: { valid: true, value: datas.type },
-        folio: { valid: true, value: datas.folio },
-        mvt: { valid: null, value: datas.mvt }, 
-        cheque: { valid: true, value: datas.cheque }, 
-        checked: { valid: true, value: datas.checked }, 
+        mvt: { valid: null, value: datas.mvt },
+        cheque: { valid: true, value: datas.cheque },
+        checked: { valid: true, value: datas.checked },
     }
 
     const [fields, setFields] = useState(fieldsDatas)
@@ -39,7 +38,6 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
             label: fields.label.value.trim(),
             type: fields.type.value,
             cheque: fields.cheque.value,
-            folio: fields.folio.value,
             mvt: fields.mvt.value,
             checked: fields.checked.value
         })
@@ -67,11 +65,10 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         newFields[e.target.id].value = e.target.value
         const valid = isInputValid(e.target)
         newFields[e.target.id].valid = valid
-        setFields({...newFields })
+        setFields({ ...newFields })
         if (
             fields.label.valid
             && fields.date.valid
-            && fields.folio.valid
             && fields.type.valid
             && fields.cheque.valid
             && fields.mvt.valid
@@ -92,7 +89,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         setStartDate(newDate)
         const newFields = { ...fields }
         newFields.date.value = newDate
-        setFields({...newFields })
+        setFields({ ...newFields })
     }
 
     return (
@@ -136,7 +133,6 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             variant="success"
                             onClick={handleButtonDateClick}
                         >
-                            {/* {console.log(startDate.toLocaleDateString())} */}
                             {startDate.toLocaleDateString()}
                         </Button>
                         {isDatePickerOpen && (
@@ -151,21 +147,6 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             </CalendarContainer>
 
                         )}
-                    </Form.Group>
-
-                    <Form.Group as={Col} className="mb-3" >
-                        <Form.Label >Folio :</Form.Label>
-                        <Form.Control
-                            id="folio"
-                            className={`input-control
-                                ${fields.folio.valid === null ? "" : fields.folio.valid ? "is-valid" : "is-invalid"}
-                                `}
-                            placeholder="Folio du mouvement"
-                            value={fields.folio.value}
-                            onChange={handleChange}
-                            pattern={"alpha_num"}
-                            maxLength={5}
-                        />
                     </Form.Group>
 
                     <Form.Group as={Col} className="mb-3" >
