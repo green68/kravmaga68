@@ -8,28 +8,25 @@
 ## Suivi :
 
 ### FIX :
-
+- [ ] @ts-check for all files or jsconfig.json
 
 ### TODO :
-- [ ] disabled validation on tabulation if error in UserInit.jsx
 - [ ] drop file in DropFile.jsx (see [react-dropzone.js]( https://react-dropzone.js.org/#section-previews))
 
-- [ ] bankItem card add cheque
 - [ ] bankItem card design in cardPage
-- [ ] bankItem set auto folio 
-    ex: "2022-001" -> console.log(`${year}-${id.padStart(3, '0')}`)
-
 - [ ] cashItem card design in cardPage
-- [ ] cashItem set auto folio 
-    ex: "2022-001" -> console.log(`${year}-${id.padStart(3, '0')}`)
 
-- [ ] bankItem if type="banque" && mvt negative => set an oposite instance for cashItem 
-- [ ] bankItem if type="banque" && mvt positive => set an oposite instance for cashItem 
+- [ ] cashItem if type="BANQUE" && mvt negative => set an oposite instance for bankItem 
+- [ ] cashItem if type="BANQUE" && mvt positive => set an oposite instance for bankItem 
 
 
 ### DONE :
-<!-- 2022-09-30 -->
-- [x] fix change date in Form for bank & cash
+<!-- 2022-10-03 -->
+- [x] set auto folio in BankItem & CashItem 
+- [x] delete folio in BankItem & CashItem
+- [x] bankItem card add cheque
+
+- [x] fix change date in Form for bank & cash <!-- 2022-09-30 -->
 
 - [x] implement component InputMvt <!-- 2022-09-28 -->
 
