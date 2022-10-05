@@ -15,8 +15,7 @@ import Validation from "../Validation";
  */
 const FormBankItem = ({ onClose, onChange, datas }) => {
 
-    console.log(datas);
-    const fieldsDatas = {
+    const [fields, setFields] = useState({
         id: { valid: null, value: datas.id },
         date: { valid: true, value: datas.date },
         label: { valid: null, value: datas.label },
@@ -24,9 +23,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
         mvt: { valid: null, value: datas.mvt },
         cheque: { valid: true, value: datas.cheque },
         checked: { valid: true, value: datas.checked },
-    }
-
-    const [fields, setFields] = useState(fieldsDatas)
+    })
     const [startDate, setStartDate] = useState(fields.date.value)
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const [isFormValid, setIsFormValid] = useState(false);
