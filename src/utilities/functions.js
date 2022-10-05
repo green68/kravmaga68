@@ -1,4 +1,3 @@
-
 const isJSON = datas => {
     try {
         JSON.parse(datas)
@@ -12,12 +11,13 @@ const Pathname = "kravmaga68/"
 const pathTo = menu => Pathname + menu
 
 const downloadFile = (content, fileName, contentType) => {
-    var a = document.createElement("a");
-    var file = new Blob([content], { type: contentType });
-    a.href = URL.createObjectURL(file);
-    a.download = fileName;
-    a.click();
-}
+        var a = document.createElement("a");
+        var file = new Blob([content], { type: contentType })
+        a.target = '_blank'
+        a.href = URL.createObjectURL(file);
+        a.download = fileName;
+        a.click();
+    }
 
 /**
  * 
@@ -48,7 +48,7 @@ const isInputValid = (eventTarget) => {
     
     if(!eventTarget?.pattern) {
 
-        console.log("Functions : isInputValid => no pattern for :",eventTarget);
+        console.log("Functions : isInputValid => no pattern for :",eventTarget.id);
         if(eventTarget.required && eventTarget.value.trim() === "") return false
         
         return true
