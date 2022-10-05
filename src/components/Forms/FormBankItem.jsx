@@ -123,7 +123,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
 
                 <Row className="mb3">
 
-                    <Form.Group as={Col} className="mb-3" >
+                    <Form.Group as={Col} className="mb-3 col-lg-3" >
                         <Form.Label >Date :</Form.Label>
                         <Button
                             size="lg"
@@ -147,7 +147,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                         )}
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" >
+                    <Form.Group as={Col} className="mb-3 col-lg-3" >
                         <Form.Label >Type :</Form.Label>
                         <Form.Control
                             id="type"
@@ -165,14 +165,11 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
 
                     </Form.Group>
 
-                </Row>
-
-                <Row>
-                    <Form.Group as={Col} className="mb-3 col-9" >
+                    <Form.Group as={Col} className="mb-3  col-lg-6 col-8" >
                         <InputMvt mvt={fields.mvt} handleChange={handleChange} />
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3" >
+                    <Form.Group as={Col} className="mb-3 col-3" >
                         <Form.Label>Vérifié :</Form.Label>
                         <Form.Check
                             id="checked"
@@ -182,6 +179,7 @@ const FormBankItem = ({ onClose, onChange, datas }) => {
                             onChange={handleChange}
                         />
                     </Form.Group>
+
                 </Row>
 
             </Form>

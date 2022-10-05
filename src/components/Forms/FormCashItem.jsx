@@ -118,10 +118,10 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
 
                 <Row className="mb3">
 
-                    <Form.Group as={Col} className="mb-3" >
+                    <Form.Group as={Col} className="mb-3 col-lg-3" >
                         <Form.Label >Date :</Form.Label>
                         <Button
-                            size="lg"
+                            // size="lg"
                             className="btn-date"
                             variant="success"
                             onClick={handleButtonDateClick}
@@ -143,10 +143,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
                         )}
                     </Form.Group>
 
-                </Row>
-
-                <Row>
-                    <Form.Group as={Col} className="mb-3" >
+                    <Form.Group as={Col} className="mb-3 col-lg-3">
                         <Form.Label >Type :</Form.Label>
                         <Form.Control
                             id="type"
@@ -163,7 +160,7 @@ const FormCashItem = ({ onClose, onChange, datas }) => {
 
                     </Form.Group>
 
-                    <Form.Group as={Col} className="mb-3 col-8" >
+                    <Form.Group as={Col} className="mb-3 col-lg-6 col-12" >
                         <InputMvt mvt={fields.mvt} handleChange={handleChange} />
                     </Form.Group>
 
