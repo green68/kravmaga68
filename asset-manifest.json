@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/kravmaga68/static/css/main.c9e88c81.css",
-    "main.js": "/kravmaga68/static/js/main.e8e0fa3d.js",
+    "main.css": "/kravmaga68/static/css/main.73f95e92.css",
+    "main.js": "/kravmaga68/static/js/main.e74a94ec.js",
     "static/media/icon.png": "/kravmaga68/static/media/icon.3237daa0e04081d8a3a9.png",
     "index.html": "/kravmaga68/index.html",
-    "main.c9e88c81.css.map": "/kravmaga68/static/css/main.c9e88c81.css.map",
-    "main.e8e0fa3d.js.map": "/kravmaga68/static/js/main.e8e0fa3d.js.map"
+    "main.73f95e92.css.map": "/kravmaga68/static/css/main.73f95e92.css.map",
+    "main.e74a94ec.js.map": "/kravmaga68/static/js/main.e74a94ec.js.map"
   },
   "entrypoints": [
-    "static/css/main.c9e88c81.css",
-    "static/js/main.e8e0fa3d.js"
+    "static/css/main.73f95e92.css",
+    "static/js/main.e74a94ec.js"
   ]
 }
