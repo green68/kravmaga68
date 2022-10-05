@@ -3,7 +3,7 @@ import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { User } from "../classes/User";
 import { pathTo } from "../utilities/Functions";
-import { Menu } from "../utilities/Menu";
+import { Menu } from "../utilities/Constantes";
 import Validation from "./Validation";
 
 /**

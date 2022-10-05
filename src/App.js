@@ -22,7 +22,7 @@ import HomePage from "./pages/HomePage";
 import ToolsPage from "./pages/ToolsPage";
 import YearPage from "./pages/YearPage";
 import { pathTo } from "./utilities/Functions";
-import { Menu } from "./utilities/Menu";
+import { Menu } from "./utilities/Constantes";
 
 /* eslint-disable */
 import { BankItem } from "./classes/BankItem";
